@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TVING Tech Meetup — Vol. 07</title>
+<meta name="description" content="1,000만이 보는 그 화면을 만드는 사람들. TVING Tech Meetup, 한 달에 한 번." />
+
+<!-- Speaker photos (lifted for offline bundling) -->
+<meta name="ext-resource-dependency" content="speakers/spk1.svg" data-resource-id="spk1" />
+<meta name="ext-resource-dependency" content="speakers/spk2.svg" data-resource-id="spk2" />
+<meta name="ext-resource-dependency" content="speakers/spk3.svg" data-resource-id="spk3" />
+<meta name="ext-resource-dependency" content="speakers/spk4.svg" data-resource-id="spk4" />
+<meta name="ext-resource-dependency" content="speakers/spk5.svg" data-resource-id="spk5" />
+<meta name="ext-resource-dependency" content="speakers/spk6.svg" data-resource-id="spk6" />
+
+<!-- Thumbnail splash for standalone bundle -->
+<template id="__bundler_thumbnail" data-bg-color="#0B0B0B">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0B0B0B" />
+    <g transform="translate(600 400)">
+      <rect x="-260" y="-80" width="520" height="160" fill="#C6F73B" transform="rotate(-2)" />
+      <text x="0" y="22" font-family="Pretendard, sans-serif" font-size="92" font-weight="900"
+            text-anchor="middle" fill="#0B0B0B" letter-spacing="-4">TVING</text>
+    </g>
+    <text x="600" y="540" font-family="ui-monospace, monospace" font-size="22" font-weight="700"
+          text-anchor="middle" fill="#C6F73B" letter-spacing="6">TECH · MEETUP · VOL.07</text>
+    <g fill="#FFFFFF">
+      <path d="M260 220 C 260 240 260 240 220 250 C 260 260 260 260 260 280 C 260 260 260 260 300 250 C 260 240 260 240 260 220 Z" />
+      <path d="M940 560 C 940 580 940 580 900 590 C 940 600 940 600 940 620 C 940 600 940 600 980 590 C 940 580 940 580 940 560 Z" />
+    </g>
+    <g fill="#C6F73B">
+      <path d="M200 580 C 200 600 200 600 160 610 C 200 620 200 620 200 640 C 200 620 200 620 240 610 C 200 600 200 600 200 580 Z" />
+      <path d="M980 220 C 980 240 980 240 940 250 C 980 260 980 260 980 280 C 980 260 980 260 1020 250 C 980 240 980 240 980 220 Z" />
+    </g>
+  </svg>
+</template>
+
+<!-- Tailwind (CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "lime-bru": "#C6F73B",
+          "bg-0": "#0B0B0B",
+          "bg-1": "#121212",
+          "bg-2": "#1A1A1A",
+          "bg-3": "#232323",
+          "fg-1": "#ffffff",
+          "fg-2": "#E5E5E5",
+          "fg-3": "#A0A0A0",
+          "fg-4": "#6A6A6A",
+        },
+        fontFamily: {
+          sans: ['"Pretendard Variable"', "Pretendard", "system-ui", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+<!-- Styles -->
+<link rel="stylesheet" href="bru/styles.css" />
+
+<style>
+  body { background: var(--bg-0) !important; color: var(--fg-1) !important; }
+  .border-line        { border-color: var(--line) !important; }
+  .border-line-strong { border-color: var(--line-strong) !important; }
+  .bg-line            { background: var(--line); }
+</style>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Order: data → hooks → icons → decorations → components → app -->
+  <script type="text/babel" src="data.jsx"></script>
+  <script type="text/babel" src="hooks.jsx"></script>
+  <script type="text/babel" src="icons.jsx"></script>
+  <script type="text/babel" src="bru/decorations.jsx"></script>
+  <script type="text/babel" src="bru/HeaderHero.jsx"></script>
+  <script type="text/babel" src="bru/About.jsx"></script>
+  <script type="text/babel" src="bru/Schedule.jsx"></script>
+  <script type="text/babel" src="bru/Speakers.jsx"></script>
+  <script type="text/babel" src="bru/CFP.jsx"></script>
+  <script type="text/babel" src="bru/Footer.jsx"></script>
+  <script type="text/babel" src="bru/app.jsx"></script>
+</body>
+</html>
