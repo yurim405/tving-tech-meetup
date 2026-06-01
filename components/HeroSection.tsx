@@ -259,7 +259,7 @@ export default function HeroSection() {
                   'LIVE · WEB · ML · ADS · DESIGN', '✦',
                   'MONTHLY ENGINEERING JOURNAL', '✦',
                   'HOSTED BY WEB CORE DEVELOPMENT', '✦',
-                  `VOL.07 · 「${MEETUP_META.themeKo}」`, '✦',
+                  `「${MEETUP_META.themeKo}」`, '✦',
                 ].map((t, i) => (
                   <span key={`${dup}-${i}`} className={t === '✦' ? 'text-lime' : ''}>{t}</span>
                 ))}

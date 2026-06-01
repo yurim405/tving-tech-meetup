@@ -1,5 +1,5 @@
 export const MEETUP_META = {
-  edition: 'Vol. 07',
+  edition: '',
   monthLabel: 'May',
   dateText: '2026. 06. 05 (FRI) 15:00 – 16:30',
   venue: '13층 C/D',

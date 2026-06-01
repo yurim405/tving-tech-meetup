@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { MEETUP_DATE } from '@/data/meetup-data';
+import { MEETUP_TARGET_ISO } from '@/data/meetup-data';
 
 export default function Countdown() {
-  const target = useMemo(() => MEETUP_DATE.getTime(), []);
+  const target = useMemo(() => new Date(MEETUP_TARGET_ISO).getTime(), []);
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {

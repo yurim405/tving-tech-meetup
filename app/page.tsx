@@ -12,7 +12,6 @@ import Footer from '@/components/Footer';
 
 const TICKER_1 = [
   '「스트리밍의 안쪽, 그 너머」', '✦',
-  'VOL.07', '✦',
   'LIVE · WEB · ML · ADS', '✦',
   'TVING TECH MEETUP', '✦',
   'MAY 2026', '✦',

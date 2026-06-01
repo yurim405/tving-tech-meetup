@@ -9,11 +9,10 @@ interface CfpForm {
   team: string;
   title: string;
   abstract: string;
-  file: File | null;
 }
 
 const INITIAL_FORM: CfpForm = {
-  name: '', team: '', title: '', abstract: '', file: null,
+  name: '', team: '', title: '', abstract: '',
 };
 
 function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
@@ -34,37 +33,38 @@ export default function CfpSection() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
-  const set = (k: keyof CfpForm, v: string | boolean) => {
+  const set = (k: keyof CfpForm, v: string) => {
     setForm((f) => ({ ...f, [k]: v }));
   };
   const remaining = 600 - form.abstract.length;
 
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    if (!form.name || !form.title || !form.abstract) {
+  const validate = () => {
+    if (!form.name.trim() || !form.title.trim() || !form.abstract.trim()) {
       setError('이름, 제목, 발표 요약은 필수입니다.');
-      return;
+      return false;
     }
+    setError('');
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
 
     setSubmitting(true);
-    try {
-      const body = new FormData();
-      body.append('name', form.name);
-      body.append('team', form.team);
-      body.append('length', '10분');
-      body.append('title', form.title);
-      body.append('abstract', form.abstract);
-      if (form.file) body.append('file', form.file);
+    setError('');
 
+    try {
       const res = await fetch('/api/cfp', {
         method: 'POST',
-        body,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, length: '10분' }),
       });
 
       const data = await res.json();
+
       if (!res.ok) {
-        setError(data.error || '제출에 실패했습니다.');
+        setError(data.error ?? '제출 중 오류가 발생했습니다.');
         return;
       }
 
@@ -126,13 +126,17 @@ export default function CfpSection() {
               style={{ border: '1.5px solid var(--line-strong)', boxShadow: '8px 8px 0 var(--lime)' }}
             >
               {!submitted ? (
-                <form onSubmit={submit} className="space-y-7">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-7"
+                >
+
                   <Field label="NAME *">
-                    <input type="text" value={form.name} onChange={(e) => { set('name', e.target.value); }} placeholder="홍길동" />
+                    <input type="text" name="name" value={form.name} onChange={(e) => { set('name', e.target.value); }} placeholder="홍길동" />
                   </Field>
 
                   <Field label="소속 팀 / 회사">
-                    <input type="text" value={form.team} onChange={(e) => { set('team', e.target.value); }} placeholder="예) TVING · Web Core Development" />
+                    <input type="text" name="team" value={form.team} onChange={(e) => { set('team', e.target.value); }} placeholder="예) TVING · Web Core Development" />
                   </Field>
 
                   {/* length - fixed 10분 */}
@@ -144,41 +148,11 @@ export default function CfpSection() {
                   </div>
 
                   <Field label="발표 제목 *">
-                    <input type="text" value={form.title} onChange={(e) => { set('title', e.target.value); }} placeholder="한 줄로 요약하면 어떤 이야기인가요?" maxLength={120} />
+                    <input type="text" name="title" value={form.title} onChange={(e) => { set('title', e.target.value); }} placeholder="한 줄로 요약하면 어떤 이야기인가요?" maxLength={120} />
                   </Field>
 
                   <Field label="발표 요약 *" hint={`${remaining}자 남음`}>
-                    <textarea rows={5} value={form.abstract} onChange={(e) => { set('abstract', e.target.value.slice(0, 600)); }} placeholder="어떤 문제를 풀었고, 무엇을 배웠는지 600자 이내로." />
-                  </Field>
-
-                  {/* 첨부파일 */}
-                  <Field label="첨부파일" hint="PDF, PPTX, ZIP (최대 20MB)">
-                    <div className="relative">
-                      <input
-                        type="file"
-                        accept=".pdf,.pptx,.zip,.png,.jpg,.jpeg"
-                        onChange={(e) => {
-                          const file = e.target.files?.[0] ?? null;
-                          setForm((f) => ({ ...f, file }));
-                        }}
-                        className="block w-full text-[13px] text-[var(--fg-3)]
-                          file:mr-4 file:py-2 file:px-4 file:border file:border-[var(--line)]
-                          file:text-[12px] file:font-bold file:bg-[var(--bg-2)] file:text-[var(--fg-2)]
-                          file:cursor-pointer file:transition-all hover:file:bg-[var(--lime)] hover:file:text-black"
-                      />
-                      {form.file && (
-                        <div className="mt-2 flex items-center gap-2 text-[12px] text-[var(--fg-3)]">
-                          <span className="font-mono">{form.file.name}</span>
-                          <button
-                            type="button"
-                            onClick={() => { setForm((f) => ({ ...f, file: null })); }}
-                            className="text-[var(--fg-4)] hover:text-white"
-                          >
-                            삭제
-                          </button>
-                        </div>
-                      )}
-                    </div>
+                    <textarea rows={5} name="abstract" value={form.abstract} onChange={(e) => { set('abstract', e.target.value.slice(0, 600)); }} placeholder="어떤 문제를 풀었고, 무엇을 배웠는지 600자 이내로." />
                   </Field>
 
                   {error && (
@@ -189,7 +163,7 @@ export default function CfpSection() {
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-[var(--line)]">
                     <p className="text-[12px] text-[var(--fg-4)] font-mono">
-                      제출하면 Confluence 밋업 페이지에 자동 등록됩니다.
+                      제출하면 Google Sheets에 자동 등록됩니다.
                     </p>
                     <button type="submit" className="btn-lime" disabled={submitting}>
                       {submitting ? '제출 중...' : '신청서 제출'}
@@ -207,7 +181,7 @@ export default function CfpSection() {
                   </div>
                   <h3 className="display-mid">접수 완료<span className="text-lime">!</span></h3>
                   <p className="mt-5 text-[var(--fg-3)] text-[15px] leading-[1.7] max-w-[420px] mx-auto">
-                    <span className="text-white font-bold">{form.name}</span> 님의 발표 신청이 Confluence에 등록되었습니다.
+                    발표 신청이 등록되었습니다.
                   </p>
                   <button onClick={reset} className="mt-8 btn-ghost-line text-[13px]">
                     다른 발표 신청하기

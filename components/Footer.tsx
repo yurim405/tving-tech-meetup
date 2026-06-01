@@ -52,7 +52,7 @@ export default function Footer() {
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <span className="sticker" style={{ transform: 'rotate(-2deg)' }}>
-                <Sparkle size={14} color="#000" /> VOL.08 · COMING SOON
+                <Sparkle size={14} color="#000" /> COMING SOON
               </span>
               <button
                 onClick={() => { scrollToId('cfp'); }}

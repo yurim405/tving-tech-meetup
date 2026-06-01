@@ -52,7 +52,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3 whitespace-nowrap">
-          <span className="chip hidden xl:inline-flex">VOL.07 · MAY 2026</span>
+          <span className="chip hidden xl:inline-flex">MAY 2026</span>
           <button
             onClick={() => { scrollToId('cfp'); }}
             className="btn-lime"
