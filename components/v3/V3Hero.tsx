@@ -14,6 +14,22 @@ export default function V3Hero() {
         }}
       />
 
+      {/* 리본 — 원본 렌더에서 배경과 글자를 걷어내고 띠만 남긴 이미지 */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/tving-ribbon.webp"
+        alt=""
+        aria-hidden
+        width={1600}
+        height={900}
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+        style={{
+          // 아래로 이어지는 SVG 띠와 겹쳐 페이드시켜 이음매를 감춘다
+          maskImage: 'linear-gradient(to bottom, #000 74%, transparent 97%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, #000 74%, transparent 97%)',
+        }}
+      />
+
       <div className="relative flex-1 flex items-center justify-center px-5 md:px-10 pt-[92px] pb-16">
         <div className="text-center w-full max-w-[1000px]">
           {/* 라벨 줄 — 좌우로 가는 선이 뻗는다 */}
