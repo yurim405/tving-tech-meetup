@@ -4,6 +4,7 @@
 
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 :root {
   /* ─── 가을 라이트: 크림 배경 + 단풍 포인트 ─── */
@@ -28,6 +29,7 @@
   --on-maple: #2a1a0e;
   /* 브루탈리즘 오프셋 그림자: 라이트 배경에선 검정 대신 브라운 */
   --shadow: #3b2a1e;
+  --font-display: 'Jua', 'Pretendard Variable', 'Pretendard', sans-serif;
   --ginkgo: #f2b33d;
   --persimmon: #c0442b;
 }
@@ -62,17 +64,19 @@ html, body {
 }
 
 /* ─── typography ─── */
+/* 디스플레이 타이포는 손글씨체(Jua) — 단일 웨이트라 400 고정, 자간도 완화 */
 .display-hero    { font-size: clamp(64px, 11vw, 170px);  font-weight: 900; letter-spacing: -0.055em; line-height: 0.86; }
-.display-section { font-size: clamp(36px, 6vw, 84px);    font-weight: 900; letter-spacing: -0.05em;  line-height: 1.15; }
-.display-mid     { font-size: clamp(28px, 4vw, 52px);    font-weight: 900; letter-spacing: -0.04em;  line-height: 0.95; }
+.display-section { font-family: var(--font-display); font-size: clamp(36px, 6vw, 84px);   font-weight: 400; letter-spacing: -0.015em; line-height: 1.15; }
+.display-mid     { font-family: var(--font-display); font-size: clamp(28px, 4vw, 52px);   font-weight: 400; letter-spacing: -0.01em; line-height: 1.1; }
 h1, h2, h3, h4, .display-hero, .display-section, li, a, button, p { word-break: keep-all; }
 
 /* ─── pill tags ─── */
 .pill-tag {
   display: inline-block;
+  font-family: var(--font-display);
   padding: 12px 22px;
-  font-size: clamp(15px, 1.6vw, 22px);
-  font-weight: 800;
+  font-size: clamp(17px, 1.8vw, 25px);
+  font-weight: 400;
   letter-spacing: -0.02em;
   box-shadow: 4px 4px 0 var(--shadow);
   white-space: nowrap;

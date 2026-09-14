@@ -22,6 +22,7 @@ const config: Config = {
         'fg-4': '#AB9077',
       },
       fontFamily: {
+        display: ['Jua', 'Pretendard Variable', 'Pretendard', 'sans-serif'],
         sans: [
           'Pretendard Variable',
           'Pretendard',

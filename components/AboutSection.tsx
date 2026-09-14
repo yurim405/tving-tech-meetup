@@ -34,7 +34,7 @@ export default function AboutSection() {
                 <BrushUnderline width={520} color="var(--maple)" style={{ position: 'absolute', left: -4, bottom: '-12%', width: '104%' }} />
               </span><br />
               것을{' '}
-              <span style={{ background: 'var(--maple)', color: 'var(--on-maple)', padding: '0 14px', marginLeft: -6, display: 'inline-block', transform: 'rotate(-1deg)' }}>
+              <span style={{ background: 'var(--maple)', color: 'var(--on-maple)', padding: '0 14px', marginLeft: -6, display: 'inline-block', lineHeight: 0.92, transform: 'rotate(-1deg)' }}>
                 말합니다.
               </span>
             </h2>

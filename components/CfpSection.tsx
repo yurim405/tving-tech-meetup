@@ -106,7 +106,7 @@ export default function CfpSection() {
                 발표
                 <BrushUnderline width={220} color="var(--maple)" style={{ position: 'absolute', left: -4, bottom: '-14%', width: '108%' }} />
               </span><br />
-              <span style={{ background: 'var(--maple)', color: 'var(--on-maple)', padding: '0 14px', display: 'inline-block', transform: 'rotate(-2deg)' }}>
+              <span style={{ background: 'var(--maple)', color: 'var(--on-maple)', padding: '0 14px', display: 'inline-block', lineHeight: 0.92, transform: 'rotate(-2deg)' }}>
                 신청.
               </span>
             </h2>
