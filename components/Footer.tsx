@@ -2,7 +2,8 @@
 
 import { MEETUP_META } from '@/data/meetup-data';
 import { scrollToId } from '@/hooks';
-import { Sparkle, StarBurst, Scribble } from '@/components/Decorations';
+import { Sparkle } from '@/components/Decorations';
+import { PuffyBlob, PuffyPill, PuffyQuilt, PuffyTorus } from '@/components/Puffy';
 
 const LINKS = [
   { id: 'about', label: 'About' },
@@ -19,16 +20,16 @@ export default function Footer() {
       <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
 
       <div className="absolute top-[18%] right-[8%] rotate-[15deg]">
-        <Sparkle size={60} color="var(--maple)" className="deco-pop" style={{ '--d': '0.2s' } as React.CSSProperties} />
+        <PuffyTorus size={140} className="deco-pop" style={{ '--d': '0.2s' } as React.CSSProperties} />
       </div>
       <div className="absolute top-[32%] right-[16%] -rotate-12">
-        <Sparkle size={32} color="var(--ginkgo)" className="deco-twinkle" style={{ '--d': '0.5s' } as React.CSSProperties} />
+        <PuffyPill size={120} className="deco-twinkle" style={{ '--d': '0.5s' } as React.CSSProperties} />
       </div>
       <div className="absolute top-[10%] right-[20%]">
-        <StarBurst size={44} color="var(--persimmon)" className="deco-wiggle" style={{ '--d': '0.7s' } as React.CSSProperties} />
+        <PuffyBlob size={110} className="deco-wiggle" style={{ '--d': '0.7s' } as React.CSSProperties} />
       </div>
       <div className="absolute bottom-[30%] left-[4%] -rotate-12">
-        <Scribble size={100} color="var(--fg-4)" className="deco-wiggle" style={{ '--d': '0.9s' } as React.CSSProperties} />
+        <PuffyQuilt size={130} color="var(--ginkgo)" className="deco-wiggle" style={{ '--d': '0.9s' } as React.CSSProperties} />
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-6 md:px-10 pt-24 md:pt-28 pb-10">

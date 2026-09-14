@@ -1,6 +1,6 @@
 'use client';
 
-import { Sparkle, StarBurst } from '@/components/Decorations';
+import { PuffyBlob, PuffyTorus } from '@/components/Puffy';
 
 const GUIDELINES = [
   {
@@ -63,10 +63,10 @@ export default function GuidelinesSection() {
       <div className="absolute inset-0 bg-grid-tight opacity-40 pointer-events-none" />
 
       <div className="absolute top-[10%] right-[6%] rotate-[12deg]">
-        <Sparkle size={36} color="var(--maple)" className="deco-twinkle" style={{ '--d': '0.3s' } as React.CSSProperties} />
+        <PuffyTorus size={125} className="deco-twinkle" style={{ '--d': '0.3s' } as React.CSSProperties} />
       </div>
       <div className="absolute bottom-[12%] left-[5%]">
-        <StarBurst size={40} color="var(--persimmon)" className="deco-wiggle" style={{ '--d': '0.6s' } as React.CSSProperties} />
+        <PuffyBlob size={115} className="deco-wiggle" style={{ '--d': '0.6s' } as React.CSSProperties} />
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-6 md:px-10">

@@ -3,7 +3,8 @@
 import { SCHEDULE_DATA } from '@/data/meetup-data';
 import type { ScheduleItem } from '@/data/meetup-data';
 import { Icon } from '@/components/Icons';
-import { Sparkle, BrushSmile } from '@/components/Decorations';
+import { Sparkle } from '@/components/Decorations';
+import { PuffyPill, PuffyQuilt, PuffyTorus } from '@/components/Puffy';
 import TiltCard from '@/components/TiltCard';
 
 const TRACKS = ['MAIN', 'INFRA', 'WEB', 'ML', 'DESIGN', 'ADS'];
@@ -125,13 +126,13 @@ export default function ScheduleSection() {
       <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
 
       <div className="absolute top-[8%] left-[5%] rotate-[15deg]">
-        <Sparkle size={48} color="var(--maple)" className="deco-pop" style={{ '--d': '0.4s' } as React.CSSProperties} />
+        <PuffyQuilt size={135} className="deco-pop" style={{ '--d': '0.4s' } as React.CSSProperties} />
       </div>
       <div className="absolute top-[12%] right-[8%] -rotate-[10deg]">
-        <Sparkle size={36} color="var(--ginkgo)" className="deco-twinkle" style={{ '--d': '0.7s' } as React.CSSProperties} />
+        <PuffyPill size={130} className="deco-twinkle" style={{ '--d': '0.7s' } as React.CSSProperties} />
       </div>
       <div className="absolute bottom-[6%] right-[5%] -rotate-[8deg]">
-        <BrushSmile width={120} color="var(--fg-4)" className="deco-wiggle" style={{ '--d': '0.9s' } as React.CSSProperties} />
+        <PuffyTorus size={125} color="var(--persimmon)" className="deco-wiggle" style={{ '--d': '0.9s' } as React.CSSProperties} />
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-6 md:px-10">

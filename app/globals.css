@@ -1,10 +1,11 @@
+/* @import는 다른 룰보다 먼저 와야 유효하다. @tailwind 뒤에 두면 브라우저가 통째로 무시한다. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Black+Han+Sans&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 :root {
   /* ─── 가을 라이트: 크림 배경 + 단풍 포인트 ─── */
@@ -29,7 +30,8 @@
   --on-maple: #2a1a0e;
   /* 브루탈리즘 오프셋 그림자: 라이트 배경에선 검정 대신 브라운 */
   --shadow: #3b2a1e;
-  --font-display: 'Jua', 'Pretendard Variable', 'Pretendard', sans-serif;
+  /* 라틴은 Archivo Black, 한글 글리프가 없어 Black Han Sans로 폴백된다 */
+  --font-display: 'Archivo Black', 'Black Han Sans', 'Pretendard Variable', sans-serif;
   --ginkgo: #f2b33d;
   --persimmon: #c0442b;
 }
@@ -40,6 +42,8 @@ html, body {
   margin: 0;
   padding: 0;
   background: var(--bg-0);
+  background-image: linear-gradient(168deg, #fffaf2 0%, var(--bg-0) 42%, #f6e9d2 100%);
+  background-attachment: fixed;
   color: var(--fg-1);
   font-feature-settings: 'ss06', 'tnum';
   -webkit-font-smoothing: antialiased;
@@ -65,9 +69,9 @@ html, body {
 
 /* ─── typography ─── */
 /* 디스플레이 타이포는 손글씨체(Jua) — 단일 웨이트라 400 고정, 자간도 완화 */
-.display-hero    { font-size: clamp(64px, 11vw, 170px);  font-weight: 900; letter-spacing: -0.055em; line-height: 0.86; }
-.display-section { font-family: var(--font-display); font-size: clamp(36px, 6vw, 84px);   font-weight: 400; letter-spacing: -0.015em; line-height: 1.15; }
-.display-mid     { font-family: var(--font-display); font-size: clamp(28px, 4vw, 52px);   font-weight: 400; letter-spacing: -0.01em; line-height: 1.1; }
+.display-hero    { font-family: var(--font-display); font-size: clamp(44px, 8.8vw, 138px); font-weight: 400; letter-spacing: -0.035em; line-height: 0.92; }
+.display-section { font-family: var(--font-display); font-size: clamp(38px, 6.2vw, 88px); font-weight: 400; letter-spacing: -0.03em; line-height: 1.08; }
+.display-mid     { font-family: var(--font-display); font-size: clamp(30px, 4.2vw, 56px); font-weight: 400; letter-spacing: -0.025em; line-height: 1.02; }
 h1, h2, h3, h4, .display-hero, .display-section, li, a, button, p { word-break: keep-all; }
 
 /* ─── pill tags ─── */

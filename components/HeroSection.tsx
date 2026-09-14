@@ -4,7 +4,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { useCountdown, scrollToId } from '@/hooks';
 import { MEETUP_META, MEETUP_TARGET_ISO } from '@/data/meetup-data';
 import { Icon } from '@/components/Icons';
-import { Sparkle, StarBurst, BrushSmile, Scribble, HandSlash, BrushUnderline, MapleLeaf, GinkgoLeaf, AcornDoodle } from '@/components/Decorations';
+import { BrushUnderline, MapleLeaf, GinkgoLeaf } from '@/components/Decorations';
+import { PuffyTorus, PuffyBlob, PuffyQuilt, PuffyPill, PuffyNoodle } from '@/components/Puffy';
 import TypingText from '@/components/TypingText';
 import Parallax from '@/components/Parallax';
 
@@ -97,50 +98,32 @@ export default function HeroSection() {
         />
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[var(--bg-0)] to-transparent pointer-events-none z-10" />
 
-        {/* 장식 (패럴랙스) */}
-        <Parallax speed={-0.06} className="absolute top-[30%] left-[9%] rotate-[8deg]">
-          <Sparkle size={64} color="var(--ginkgo)" className="deco-pop" style={{ '--d': '0.3s' } as React.CSSProperties} />
+        {/* 부풀린 3D 오브젝트 — 레퍼런스처럼 크게, 적게 */}
+        <Parallax speed={-0.08} className="absolute top-[9%] left-[3%] rotate-[12deg]">
+          <PuffyTorus size={190} className="deco-pop" style={{ '--d': '0.3s' } as React.CSSProperties} />
         </Parallax>
-        <Parallax speed={0.04} className="absolute top-[44%] left-[14%] -rotate-12">
-          <Sparkle size={38} color="var(--persimmon)" className="deco-twinkle" style={{ '--d': '0.6s' } as React.CSSProperties} />
+        <Parallax speed={0.06} className="absolute bottom-[27%] left-[3%] -rotate-[8deg]">
+          <PuffyBlob size={150} className="deco-pop" style={{ '--d': '0.7s' } as React.CSSProperties} />
         </Parallax>
-        <Parallax speed={-0.08} className="absolute top-[26%] left-[17%] rotate-[18deg]">
-          <Sparkle size={32} color="var(--maple)" className="deco-pop" style={{ '--d': '0.9s' } as React.CSSProperties} />
+        <Parallax speed={-0.05} className="absolute bottom-[9%] left-[21%] rotate-[18deg]">
+          <PuffyPill size={140} className="deco-wiggle" style={{ '--d': '1.05s' } as React.CSSProperties} />
         </Parallax>
-        <Parallax speed={0.05} className="absolute top-[30%] right-[10%]">
-          <Sparkle size={56} color="var(--ginkgo)" className="deco-pop" style={{ '--d': '0.5s' } as React.CSSProperties} />
+        <Parallax speed={0.09} className="absolute top-[19%] right-[4%] -rotate-[14deg]">
+          <PuffyQuilt size={175} className="deco-pop" style={{ '--d': '0.45s' } as React.CSSProperties} />
         </Parallax>
-        <Parallax speed={-0.07} className="absolute top-[44%] right-[16%] rotate-[15deg]">
-          <Sparkle size={36} color="var(--maple)" className="deco-twinkle" style={{ '--d': '1.1s' } as React.CSSProperties} />
+        <Parallax speed={-0.07} className="absolute bottom-[24%] right-[2%] rotate-[10deg]">
+          <PuffyNoodle size={185} color="var(--ginkgo)" className="deco-pop" style={{ '--d': '0.85s' } as React.CSSProperties} />
         </Parallax>
-        <Parallax speed={0.06} className="absolute top-[22%] right-[6%]">
-          <StarBurst size={48} color="var(--persimmon)" className="deco-wiggle" style={{ '--d': '0.7s' } as React.CSSProperties} />
-        </Parallax>
-        <Parallax speed={-0.05} className="absolute bottom-[30%] left-[11%] rotate-[8deg]">
-          <BrushSmile width={150} color="var(--ginkgo)" className="deco-wiggle" style={{ '--d': '1.0s' } as React.CSSProperties} />
-        </Parallax>
-        <Parallax speed={0.08} className="absolute bottom-[36%] right-[6%] -rotate-12">
-          <Scribble size={130} color="var(--maple)" className="deco-pop" style={{ '--d': '0.8s' } as React.CSSProperties} />
+        <Parallax speed={0.05} className="absolute bottom-[7%] right-[24%] -rotate-[12deg]">
+          <PuffyTorus size={110} color="var(--persimmon)" className="deco-wiggle" style={{ '--d': '1.2s' } as React.CSSProperties} />
         </Parallax>
 
-        {/* 가을 잎: 화면 가장자리를 따라 흩뿌림 */}
-        <Parallax speed={-0.1} className="absolute top-[14%] left-[4%] rotate-[24deg]">
-          <MapleLeaf size={78} className="deco-pop" style={{ '--d': '0.35s' } as React.CSSProperties} />
+        {/* 가을 잎 — 부풀리면 갈래가 뭉개져 별이 되므로 평면으로 둔다 */}
+        <Parallax speed={-0.11} className="absolute top-[15%] left-[22%] rotate-[26deg]">
+          <MapleLeaf size={86} className="deco-wiggle" style={{ '--d': '0.95s' } as React.CSSProperties} />
         </Parallax>
-        <Parallax speed={0.07} className="absolute top-[58%] left-[5%] -rotate-[18deg]">
-          <GinkgoLeaf size={62} className="deco-wiggle" style={{ '--d': '0.75s' } as React.CSSProperties} />
-        </Parallax>
-        <Parallax speed={-0.05} className="absolute bottom-[16%] left-[22%] rotate-[40deg]">
-          <MapleLeaf size={44} color="var(--persimmon)" className="deco-pop" style={{ '--d': '1.15s' } as React.CSSProperties} />
-        </Parallax>
-        <Parallax speed={0.09} className="absolute top-[12%] right-[14%] -rotate-[28deg]">
-          <GinkgoLeaf size={72} className="deco-pop" style={{ '--d': '0.5s' } as React.CSSProperties} />
-        </Parallax>
-        <Parallax speed={-0.06} className="absolute top-[62%] right-[7%] rotate-[15deg]">
-          <MapleLeaf size={56} className="deco-wiggle" style={{ '--d': '0.95s' } as React.CSSProperties} />
-        </Parallax>
-        <Parallax speed={0.05} className="absolute bottom-[20%] right-[24%] -rotate-[10deg]">
-          <AcornDoodle size={40} className="deco-pop" style={{ '--d': '1.3s' } as React.CSSProperties} />
+        <Parallax speed={0.08} className="absolute top-[12%] right-[24%] -rotate-[22deg]">
+          <GinkgoLeaf size={78} className="deco-wiggle" style={{ '--d': '1.15s' } as React.CSSProperties} />
         </Parallax>
 
         {/* 코너 스티커 */}
@@ -155,13 +138,14 @@ export default function HeroSection() {
             <span className="pill-tag pill-tag-white" style={{ transform: 'rotate(3deg) translateY(2px)' }}>만드는 사람들</span>
           </div>
 
-          <div className="flex items-center gap-4 md:gap-6 reveal" data-delay="2">
-            <HandSlash height={140} color="var(--fg-1)" style={{ marginTop: -10 }} />
+          <div className="flex items-center justify-center reveal" data-delay="2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logo-tving-red.svg"
+              src="/tving-balloon.webp"
               alt="TVING"
-              className="h-[60px] md:h-[100px] lg:h-[130px] w-auto"
+              width={1400}
+              height={358}
+              className="w-[280px] md:w-[460px] lg:w-[560px] h-auto"
             />
           </div>
 
@@ -261,7 +245,7 @@ export default function HeroSection() {
               </div>
             ))}
             <div className="px-6 py-6 md:px-7 md:py-8 col-span-2 md:col-span-1 relative overflow-hidden border-b border-[var(--line)]">
-              <Sparkle size={24} color="var(--maple)" style={{ position: 'absolute', top: 14, right: 18 }} />
+              <PuffyTorus size={44} style={{ position: 'absolute', top: 6, right: 8 }} />
               <div className="font-mono text-[10px] tracking-[0.22em] text-maple font-bold">05 / HOST</div>
               <div className="mt-3 md:mt-4 text-[22px] md:text-[24px] font-extrabold tracking-[-0.03em] leading-none">Web Core</div>
               <div className="mt-2 text-[12px] md:text-[13px] font-mono text-[var(--fg-3)] tracking-wide">DEVELOPMENT · TVING</div>

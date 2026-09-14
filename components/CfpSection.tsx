@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { Icon } from '@/components/Icons';
-import { Sparkle, ArrowDoodle, StarBurst, BrushUnderline, CheckDoodle } from '@/components/Decorations';
+import { Sparkle, BrushUnderline, CheckDoodle } from '@/components/Decorations';
+import { PuffyBlob, PuffyNoodle, PuffyTorus } from '@/components/Puffy';
 
 interface CfpForm {
   name: string;
@@ -86,13 +87,13 @@ export default function CfpSection() {
       <div className="absolute inset-0 bg-grid opacity-50 pointer-events-none" />
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(45% 35% at 80% 30%, rgba(232,117,42,0.16) 0%, transparent 70%)' }} />
       <div className="absolute top-[10%] left-[8%] rotate-[20deg]">
-        <Sparkle size={56} color="var(--maple)" className="deco-pop" style={{ '--d': '0.3s' } as React.CSSProperties} />
+        <PuffyTorus size={140} className="deco-pop" style={{ '--d': '0.3s' } as React.CSSProperties} />
       </div>
       <div className="absolute top-[30%] left-[4%] -rotate-[20deg]">
-        <ArrowDoodle size={80} color="var(--maple)" className="deco-wiggle" style={{ '--d': '0.6s' } as React.CSSProperties} />
+        <PuffyNoodle size={150} className="deco-wiggle" style={{ '--d': '0.6s' } as React.CSSProperties} />
       </div>
       <div className="absolute bottom-[10%] right-[6%]">
-        <StarBurst size={56} color="var(--persimmon)" className="deco-twinkle" style={{ '--d': '0.9s' } as React.CSSProperties} />
+        <PuffyBlob size={120} className="deco-twinkle" style={{ '--d': '0.9s' } as React.CSSProperties} />
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-6 md:px-10">

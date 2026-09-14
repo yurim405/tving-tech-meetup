@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import CursorGlow from '@/components/CursorGlow';
+import { PuffyDefs } from '@/components/Puffy';
 import RevealProvider from '@/components/RevealProvider';
 import HeroSection from '@/components/HeroSection';
 import TickerBand from '@/components/TickerBand';
@@ -28,6 +29,7 @@ const TICKER_2 = [
 export default function Home() {
   return (
     <>
+      <PuffyDefs />
       <CursorGlow />
       <RevealProvider />
       <Header />

@@ -1,7 +1,8 @@
 'use client';
 
 import { MEETUP_META } from '@/data/meetup-data';
-import { Sparkle, Scribble, ArrowDoodle, BrushUnderline } from '@/components/Decorations';
+import { BrushUnderline } from '@/components/Decorations';
+import { PuffyBlob, PuffyNoodle, PuffyTorus } from '@/components/Puffy';
 
 export default function AboutSection() {
   return (
@@ -10,13 +11,13 @@ export default function AboutSection() {
 
       {/* decorations */}
       <div className="absolute top-[12%] right-[8%] rotate-[20deg]">
-        <Sparkle size={40} color="var(--maple)" className="deco-twinkle" style={{ '--d': '0.3s' } as React.CSSProperties} />
+        <PuffyTorus size={120} className="deco-twinkle" style={{ '--d': '0.3s' } as React.CSSProperties} />
       </div>
-      <div className="absolute bottom-[8%] left-[4%] -rotate-[10deg]">
-        <Scribble size={120} color="var(--fg-4)" className="deco-wiggle" style={{ '--d': '0.6s' } as React.CSSProperties} />
+      <div className="absolute bottom-[3%] left-[-2%] -rotate-[10deg]">
+        <PuffyNoodle size={150} color="var(--ginkgo)" className="deco-wiggle" style={{ '--d': '0.6s' } as React.CSSProperties} />
       </div>
-      <div className="absolute top-[44%] right-[6%] rotate-[20deg]">
-        <ArrowDoodle size={70} color="var(--maple)" className="deco-pop" style={{ '--d': '0.8s' } as React.CSSProperties} />
+      <div className="absolute top-[66%] right-[2%] rotate-[20deg]">
+        <PuffyBlob size={110} className="deco-pop" style={{ '--d': '0.8s' } as React.CSSProperties} />
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-6 md:px-10">
