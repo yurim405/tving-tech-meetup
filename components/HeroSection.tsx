@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useCountdown, scrollToId } from '@/hooks';
 import { MEETUP_META, MEETUP_TARGET_ISO } from '@/data/meetup-data';
 import { Icon } from '@/components/Icons';
-import { BrushUnderline, MapleLeaf, GinkgoLeaf } from '@/components/Decorations';
+import { MapleLeaf, GinkgoLeaf } from '@/components/Decorations';
 import { PuffyTorus, PuffyBlob, PuffyQuilt, PuffyPill, PuffyNoodle } from '@/components/Puffy';
 import TypingText from '@/components/TypingText';
 import Parallax from '@/components/Parallax';
@@ -149,17 +149,18 @@ export default function HeroSection() {
             />
           </div>
 
-          <div className="flex flex-wrap items-baseline justify-center gap-4 md:gap-6 mt-2 reveal" data-delay="3">
-            <span className="display-hero">TECH</span>
-            <span className="display-hero text-maple relative">
-              MEETUP
-              <BrushUnderline
-                width={520}
-                color="var(--maple)"
-                style={{ position: 'absolute', left: -8, bottom: '-14%', width: '104%' }}
-              />
-            </span>
-          </div>
+          {/* 타이틀이 이미지라 h1으로 감싼다 — alt가 문서의 유일한 최상위 제목이 된다 */}
+          <h1 className="flex items-center justify-center mt-3 md:mt-5 m-0 reveal" data-delay="3">
+            {/* 밑줄까지 이미지에 포함되어 있어 BrushUnderline은 쓰지 않는다 */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/tech-meetup.webp"
+              alt="TECH MEETUP"
+              width={1384}
+              height={257}
+              className="w-[320px] md:w-[600px] lg:w-[760px] h-auto"
+            />
+          </h1>
 
           <div className="mt-12 md:mt-16 font-mono text-[12px] md:text-[14px] tracking-[0.22em] uppercase text-[var(--fg-3)] reveal" data-delay="4">
             THEME / 「<TypingText text={MEETUP_META.themeKo} delay={2000} speed={120} />」
