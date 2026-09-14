@@ -8,15 +8,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'lime-bru': '#C6F73B',
-        'bg-0': '#0B0B0B',
-        'bg-1': '#121212',
-        'bg-2': '#1A1A1A',
-        'bg-3': '#232323',
-        'fg-1': '#ffffff',
-        'fg-2': '#E5E5E5',
-        'fg-3': '#A0A0A0',
-        'fg-4': '#6A6A6A',
+        maple: '#E8752A',
+        'maple-text': '#A84A12',
+        ginkgo: '#F2B33D',
+        persimmon: '#C0442B',
+        'bg-0': '#FDF6E9',
+        'bg-1': '#F8EFDF',
+        'bg-2': '#F2E5D0',
+        'bg-3': '#E9D7BC',
+        'fg-1': '#3B2A1E',
+        'fg-2': '#56402F',
+        'fg-3': '#7D6650',
+        'fg-4': '#AB9077',
       },
       fontFamily: {
         sans: [

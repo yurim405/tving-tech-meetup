@@ -48,7 +48,7 @@ export default function TypingText({
     <span className={className}>
       {displayed}
       {started && displayed.length < text.length && (
-        <span className="inline-block w-[2px] h-[1em] bg-[var(--lime)] ml-[2px] align-middle blink" />
+        <span className="inline-block w-[2px] h-[1em] bg-[var(--maple)] ml-[2px] align-middle blink" />
       )}
     </span>
   );

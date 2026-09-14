@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useCountdown, scrollToId } from '@/hooks';
 import { MEETUP_META, MEETUP_TARGET_ISO } from '@/data/meetup-data';
 import { Icon } from '@/components/Icons';
-import { Sparkle, StarBurst, BrushSmile, Scribble, HandSlash, BrushUnderline } from '@/components/Decorations';
+import { Sparkle, StarBurst, BrushSmile, Scribble, HandSlash, BrushUnderline, MapleLeaf, GinkgoLeaf, AcornDoodle } from '@/components/Decorations';
 import TypingText from '@/components/TypingText';
 import Parallax from '@/components/Parallax';
 
@@ -34,10 +34,10 @@ function HeroBottom() {
           transform: show === 'date' ? 'translateY(0)' : 'translateY(-16px)',
         }}
       >
-        <div className="font-mono text-[22px] md:text-[28px] font-black text-white tracking-tight">
+        <div className="font-mono text-[22px] md:text-[28px] font-black text-[var(--fg-1)] tracking-tight">
           2026. 06. 05.
         </div>
-        <div className="font-mono text-[22px] md:text-[28px] font-black text-white tracking-tight mt-1">
+        <div className="font-mono text-[22px] md:text-[28px] font-black text-[var(--fg-1)] tracking-tight mt-1">
           13층 C/D
         </div>
       </div>
@@ -53,10 +53,10 @@ function HeroBottom() {
         <div className="font-mono text-[12px] md:text-[14px] tracking-[0.22em] text-[var(--fg-4)] font-bold uppercase">
           Hosted by
         </div>
-        <div className="mt-2 text-[22px] md:text-[28px] font-black text-white tracking-tight">
+        <div className="mt-2 text-[22px] md:text-[28px] font-black text-[var(--fg-1)] tracking-tight">
           Web Core Development
         </div>
-        <div className="mt-1 font-mono text-[12px] tracking-[0.18em] text-[var(--lime)] font-bold">
+        <div className="mt-1 font-mono text-[12px] tracking-[0.18em] text-[var(--maple-text)] font-bold">
           TVING
         </div>
       </div>
@@ -64,7 +64,7 @@ function HeroBottom() {
       {/* 스크롤 유도 화살표 (항상 보임) */}
       <button
         onClick={() => { scrollToId('hero-content'); }}
-        className="mt-14 text-[var(--fg-3)] hover:text-[var(--lime)] transition-colors relative z-10"
+        className="mt-14 text-[var(--fg-3)] hover:text-[var(--maple-text)] transition-colors relative z-10"
         aria-label="Scroll down"
       >
         <span className="bounce-arrow inline-block"><Icon name="chevronDown" size={24} /></span>
@@ -92,35 +92,55 @@ export default function HeroSection() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(50% 35% at 50% 45%, rgba(198,247,59,0.08) 0%, transparent 70%), radial-gradient(35% 30% at 12% 80%, rgba(198,247,59,0.05) 0%, transparent 70%)',
+              'radial-gradient(50% 35% at 50% 45%, rgba(232,117,42,0.10) 0%, transparent 70%), radial-gradient(35% 30% at 12% 80%, rgba(242,179,61,0.12) 0%, transparent 70%)',
           }}
         />
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[var(--bg-0)] to-transparent pointer-events-none z-10" />
 
         {/* 장식 (패럴랙스) */}
         <Parallax speed={-0.06} className="absolute top-[30%] left-[9%] rotate-[8deg]">
-          <Sparkle size={64} color="#fff" className="deco-pop" style={{ '--d': '0.3s' } as React.CSSProperties} />
+          <Sparkle size={64} color="var(--ginkgo)" className="deco-pop" style={{ '--d': '0.3s' } as React.CSSProperties} />
         </Parallax>
         <Parallax speed={0.04} className="absolute top-[44%] left-[14%] -rotate-12">
-          <Sparkle size={38} color="#fff" className="deco-twinkle" style={{ '--d': '0.6s' } as React.CSSProperties} />
+          <Sparkle size={38} color="var(--persimmon)" className="deco-twinkle" style={{ '--d': '0.6s' } as React.CSSProperties} />
         </Parallax>
         <Parallax speed={-0.08} className="absolute top-[26%] left-[17%] rotate-[18deg]">
-          <Sparkle size={32} color="var(--lime)" className="deco-pop" style={{ '--d': '0.9s' } as React.CSSProperties} />
+          <Sparkle size={32} color="var(--maple)" className="deco-pop" style={{ '--d': '0.9s' } as React.CSSProperties} />
         </Parallax>
         <Parallax speed={0.05} className="absolute top-[30%] right-[10%]">
-          <Sparkle size={56} color="#fff" className="deco-pop" style={{ '--d': '0.5s' } as React.CSSProperties} />
+          <Sparkle size={56} color="var(--ginkgo)" className="deco-pop" style={{ '--d': '0.5s' } as React.CSSProperties} />
         </Parallax>
         <Parallax speed={-0.07} className="absolute top-[44%] right-[16%] rotate-[15deg]">
-          <Sparkle size={36} color="var(--lime)" className="deco-twinkle" style={{ '--d': '1.1s' } as React.CSSProperties} />
+          <Sparkle size={36} color="var(--maple)" className="deco-twinkle" style={{ '--d': '1.1s' } as React.CSSProperties} />
         </Parallax>
         <Parallax speed={0.06} className="absolute top-[22%] right-[6%]">
-          <StarBurst size={48} color="#fff" className="deco-wiggle" style={{ '--d': '0.7s' } as React.CSSProperties} />
+          <StarBurst size={48} color="var(--persimmon)" className="deco-wiggle" style={{ '--d': '0.7s' } as React.CSSProperties} />
         </Parallax>
         <Parallax speed={-0.05} className="absolute bottom-[30%] left-[11%] rotate-[8deg]">
-          <BrushSmile width={150} color="#fff" className="deco-wiggle" style={{ '--d': '1.0s' } as React.CSSProperties} />
+          <BrushSmile width={150} color="var(--ginkgo)" className="deco-wiggle" style={{ '--d': '1.0s' } as React.CSSProperties} />
         </Parallax>
         <Parallax speed={0.08} className="absolute bottom-[36%] right-[6%] -rotate-12">
-          <Scribble size={130} color="#fff" className="deco-pop" style={{ '--d': '0.8s' } as React.CSSProperties} />
+          <Scribble size={130} color="var(--maple)" className="deco-pop" style={{ '--d': '0.8s' } as React.CSSProperties} />
+        </Parallax>
+
+        {/* 가을 잎: 화면 가장자리를 따라 흩뿌림 */}
+        <Parallax speed={-0.1} className="absolute top-[14%] left-[4%] rotate-[24deg]">
+          <MapleLeaf size={78} className="deco-pop" style={{ '--d': '0.35s' } as React.CSSProperties} />
+        </Parallax>
+        <Parallax speed={0.07} className="absolute top-[58%] left-[5%] -rotate-[18deg]">
+          <GinkgoLeaf size={62} className="deco-wiggle" style={{ '--d': '0.75s' } as React.CSSProperties} />
+        </Parallax>
+        <Parallax speed={-0.05} className="absolute bottom-[16%] left-[22%] rotate-[40deg]">
+          <MapleLeaf size={44} color="var(--persimmon)" className="deco-pop" style={{ '--d': '1.15s' } as React.CSSProperties} />
+        </Parallax>
+        <Parallax speed={0.09} className="absolute top-[12%] right-[14%] -rotate-[28deg]">
+          <GinkgoLeaf size={72} className="deco-pop" style={{ '--d': '0.5s' } as React.CSSProperties} />
+        </Parallax>
+        <Parallax speed={-0.06} className="absolute top-[62%] right-[7%] rotate-[15deg]">
+          <MapleLeaf size={56} className="deco-wiggle" style={{ '--d': '0.95s' } as React.CSSProperties} />
+        </Parallax>
+        <Parallax speed={0.05} className="absolute bottom-[20%] right-[24%] -rotate-[10deg]">
+          <AcornDoodle size={40} className="deco-pop" style={{ '--d': '1.3s' } as React.CSSProperties} />
         </Parallax>
 
         {/* 코너 스티커 */}
@@ -131,12 +151,12 @@ export default function HeroSection() {
         {/* 메인 타이틀 (중앙) */}
         <div className="flex-1 flex flex-col items-center justify-center px-6 md:px-10 pt-16">
           <div className="flex flex-wrap items-center justify-center gap-2 mb-10 md:mb-14 reveal" data-delay="1" style={{ transform: 'rotate(-2deg)' }}>
-            <span className="pill-tag pill-tag-lime">1,000만이 보는 그 화면을</span>
+            <span className="pill-tag pill-tag-maple">1,000만이 보는 그 화면을</span>
             <span className="pill-tag pill-tag-white" style={{ transform: 'rotate(3deg) translateY(2px)' }}>만드는 사람들</span>
           </div>
 
           <div className="flex items-center gap-4 md:gap-6 reveal" data-delay="2">
-            <HandSlash height={140} color="#fff" style={{ marginTop: -10 }} />
+            <HandSlash height={140} color="var(--fg-1)" style={{ marginTop: -10 }} />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo-tving-red.svg"
@@ -147,11 +167,11 @@ export default function HeroSection() {
 
           <div className="flex flex-wrap items-baseline justify-center gap-4 md:gap-6 mt-2 reveal" data-delay="3">
             <span className="display-hero">TECH</span>
-            <span className="display-hero text-lime relative">
+            <span className="display-hero text-maple relative">
               MEETUP
               <BrushUnderline
                 width={520}
-                color="var(--lime)"
+                color="var(--maple)"
                 style={{ position: 'absolute', left: -8, bottom: '-14%', width: '104%' }}
               />
             </span>
@@ -183,13 +203,13 @@ export default function HeroSection() {
         <div className="text-center px-6 md:px-10 pt-32 md:pt-44 pb-20 md:pb-28">
           <p className="text-[18px] md:text-[22px] leading-[1.65] text-[var(--fg-3)] max-w-[600px] mx-auto">
             No.1 K-콘텐츠 플랫폼을 만드는{' '}
-            <span className="text-white font-medium">기술과 사람들</span>의 이야기.
+            <span className="text-[var(--fg-1)] font-medium">기술과 사람들</span>의 이야기.
             <br />
             한 달에 한 번, 우리가 부딪힌 문제를 가감 없이 공유합니다.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button onClick={() => { scrollToId('schedule'); }} className="btn-lime">
+            <button onClick={() => { scrollToId('schedule'); }} className="btn-maple">
               <Icon name="play" size={12} fill="currentColor" stroke={0} />
               세션 둘러보기
             </button>
@@ -241,8 +261,8 @@ export default function HeroSection() {
               </div>
             ))}
             <div className="px-6 py-6 md:px-7 md:py-8 col-span-2 md:col-span-1 relative overflow-hidden border-b border-[var(--line)]">
-              <Sparkle size={24} color="var(--lime)" style={{ position: 'absolute', top: 14, right: 18 }} />
-              <div className="font-mono text-[10px] tracking-[0.22em] text-lime font-bold">05 / HOST</div>
+              <Sparkle size={24} color="var(--maple)" style={{ position: 'absolute', top: 14, right: 18 }} />
+              <div className="font-mono text-[10px] tracking-[0.22em] text-maple font-bold">05 / HOST</div>
               <div className="mt-3 md:mt-4 text-[22px] md:text-[24px] font-extrabold tracking-[-0.03em] leading-none">Web Core</div>
               <div className="mt-2 text-[12px] md:text-[13px] font-mono text-[var(--fg-3)] tracking-wide">DEVELOPMENT · TVING</div>
             </div>
@@ -261,7 +281,7 @@ export default function HeroSection() {
                   'HOSTED BY WEB CORE DEVELOPMENT', '✦',
                   `「${MEETUP_META.themeKo}」`, '✦',
                 ].map((t, i) => (
-                  <span key={`${dup}-${i}`} className={t === '✦' ? 'text-lime' : ''}>{t}</span>
+                  <span key={`${dup}-${i}`} className={t === '✦' ? 'text-maple' : ''}>{t}</span>
                 ))}
               </div>
             ))}

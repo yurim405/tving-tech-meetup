@@ -6,11 +6,12 @@ import type { Speaker } from '@/data/meetup-data';
 import { Icon } from '@/components/Icons';
 import { Sparkle } from '@/components/Decorations';
 
+/* 단풍·은행·홍시·마른잎 — 카드마다 다른 가을 그라디언트 */
 const CARD_GRADIENTS = [
-  'linear-gradient(135deg, #1a1a2e 0%, #0a0a0f 100%)',
-  'linear-gradient(135deg, #1a2e1a 0%, #0a0f0a 100%)',
-  'linear-gradient(135deg, #2e2e1a 0%, #0f0f0a 100%)',
-  'linear-gradient(135deg, #1a1a1a 0%, #0f0a0f 100%)',
+  'linear-gradient(135deg, #f4a259 0%, #e8752a 100%)',
+  'linear-gradient(135deg, #f6c667 0%, #e0952a 100%)',
+  'linear-gradient(135deg, #e08b6a 0%, #c0442b 100%)',
+  'linear-gradient(135deg, #d9bb92 0%, #a8804f 100%)',
 ];
 
 function SpeakerCard({ s, index, onOpen }: { s: Speaker; index: number; onOpen: (s: Speaker) => void }) {
@@ -19,7 +20,7 @@ function SpeakerCard({ s, index, onOpen }: { s: Speaker; index: number; onOpen: 
   return (
     <button
       onClick={() => { onOpen(s); }}
-      className="group relative block w-full text-left overflow-hidden border border-[var(--line)] bg-[var(--bg-1)] transition-all duration-300 hover:border-[var(--lime)] hover:translate-y-[-2px]"
+      className="group relative block w-full text-left overflow-hidden border border-[var(--line)] bg-[var(--bg-1)] transition-all duration-300 hover:border-[var(--maple)] hover:translate-y-[-2px]"
     >
       {/* 그라디언트 + 이니셜 영역 */}
       <div className="relative aspect-[4/3] overflow-hidden">
@@ -27,39 +28,39 @@ function SpeakerCard({ s, index, onOpen }: { s: Speaker; index: number; onOpen: 
         <div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(circle at 30% 40%, rgba(255,255,255,0.15) 0%, transparent 60%)',
+            background: 'radial-gradient(circle at 30% 40%, rgba(253,246,233,0.35) 0%, transparent 60%)',
           }}
         />
 
         {/* 사람 실루엣 */}
         <div className="absolute inset-0 flex items-center justify-center select-none transition-transform duration-700 group-hover:scale-105">
-          <svg width="140" height="140" viewBox="0 0 80 80" fill="none" style={{ opacity: 0.15 }}>
-            <circle cx="40" cy="28" r="14" fill="#fff" />
-            <path d="M12 72c0-15.464 12.536-28 28-28s28 12.536 28 28" fill="#fff" />
+          <svg width="140" height="140" viewBox="0 0 80 80" fill="none" style={{ opacity: 0.35 }}>
+            <circle cx="40" cy="28" r="14" fill="var(--bg-0)" />
+            <path d="M12 72c0-15.464 12.536-28 28-28s28 12.536 28 28" fill="var(--bg-0)" />
           </svg>
         </div>
 
         {/* 넘버링 */}
-        <div className="absolute top-4 left-4 font-mono text-[11px] tracking-[0.18em] font-bold text-white/60">
+        <div className="absolute top-4 left-4 font-mono text-[11px] tracking-[0.18em] font-bold text-[var(--on-maple)]/70">
           {String(index + 1).padStart(2, '0')}
         </div>
 
         {/* 호버 화살표 */}
         <div
           className="absolute top-4 right-4 w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
-          style={{ background: 'var(--lime)', color: '#000' }}
+          style={{ background: 'var(--maple)', color: 'var(--on-maple)' }}
         >
           <Icon name="arrowUpRight" size={12} />
         </div>
 
         {/* 하단 그라디언트 */}
-        <div className="absolute inset-x-0 bottom-0 h-1/3" style={{ background: 'linear-gradient(to top, rgba(11,11,11,0.6), transparent)' }} />
+        <div className="absolute inset-x-0 bottom-0 h-1/3" style={{ background: 'linear-gradient(to top, rgba(59,42,30,0.35), transparent)' }} />
       </div>
 
       {/* 정보 영역 */}
       <div className="px-5 py-5 border-t border-[var(--line)]">
         <div className="flex items-baseline justify-between gap-2">
-          <h3 className="text-[20px] font-black tracking-[-0.02em] text-white">{s.name}</h3>
+          <h3 className="text-[20px] font-black tracking-[-0.02em] text-[var(--fg-1)]">{s.name}</h3>
           <span className="font-mono text-[10px] tracking-[0.12em] text-[var(--fg-4)] uppercase shrink-0">{s.role}</span>
         </div>
         <div className="mt-1 font-mono text-[10px] tracking-[0.16em] text-[var(--fg-4)] uppercase">{s.team}</div>
@@ -67,8 +68,8 @@ function SpeakerCard({ s, index, onOpen }: { s: Speaker; index: number; onOpen: 
         <div className="mt-4 h-px bg-[var(--line)]" />
 
         <div className="mt-3 flex items-start gap-2">
-          <span className="shrink-0 mt-1.5 w-1.5 h-1.5 bg-[var(--lime)] inline-block" />
-          <span className="text-[13px] leading-[1.5] text-[var(--fg-3)] line-clamp-2 group-hover:text-white transition-colors">
+          <span className="shrink-0 mt-1.5 w-1.5 h-1.5 bg-[var(--maple)] inline-block" />
+          <span className="text-[13px] leading-[1.5] text-[var(--fg-3)] line-clamp-2 group-hover:text-[var(--fg-1)] transition-colors">
             {s.topic}
           </span>
         </div>
@@ -96,7 +97,7 @@ function SpeakerModal({ s, onClose }: { s: Speaker; onClose: () => void }) {
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
       <div
         className="absolute inset-0"
-        style={{ background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(12px)' }}
+        style={{ background: 'rgba(59,42,30,0.72)', backdropFilter: 'blur(12px)' }}
         onClick={onClose}
       />
       <div
@@ -109,7 +110,7 @@ function SpeakerModal({ s, onClose }: { s: Speaker; onClose: () => void }) {
         <div className="p-7 md:p-10 overflow-auto">
           <button
             onClick={onClose}
-            className="absolute top-6 right-5 w-8 h-8 border border-[var(--line-strong)] bg-[var(--bg-2)] hover:bg-[var(--lime)] hover:text-black flex items-center justify-center text-[var(--fg-3)] transition-colors"
+            className="absolute top-6 right-5 w-8 h-8 border border-[var(--line-strong)] bg-[var(--bg-2)] hover:bg-[var(--maple)] hover:text-[var(--on-maple)] flex items-center justify-center text-[var(--fg-3)] transition-colors"
             aria-label="close"
           >
             <Icon name="close" size={14} />
@@ -124,8 +125,8 @@ function SpeakerModal({ s, onClose }: { s: Speaker; onClose: () => void }) {
           <div className="mt-7 h-px bg-[var(--line)]" />
 
           <div className="mt-6">
-            <div className="font-mono text-[10px] tracking-[0.22em] text-lime font-bold mb-3">SESSION</div>
-            <div className="text-[18px] font-bold text-white leading-[1.4]">{s.topic}</div>
+            <div className="font-mono text-[10px] tracking-[0.22em] text-maple font-bold mb-3">SESSION</div>
+            <div className="text-[18px] font-bold text-[var(--fg-1)] leading-[1.4]">{s.topic}</div>
           </div>
 
           <p className="mt-6 text-[14px] leading-[1.8] text-[var(--fg-3)]">{s.bio}</p>
@@ -149,7 +150,7 @@ export default function SpeakersSection() {
           <div>
             <div className="section-tag reveal"><span className="num">04</span> SPEAKERS</div>
             <h2 className="display-section mt-6 reveal" data-delay="1">
-              발표자<span className="text-lime">.</span>
+              발표자<span className="text-maple">.</span>
             </h2>
           </div>
           <p className="max-w-[340px] text-[var(--fg-3)] text-[14px] leading-[1.75] reveal" data-delay="2">
@@ -172,16 +173,16 @@ export default function SpeakersSection() {
           <div
             className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none"
             style={{
-              background: 'linear-gradient(to bottom, transparent 0%, rgba(11,11,11,0.5) 12%, rgba(11,11,11,0.92) 40%, rgba(11,11,11,0.98) 100%)',
+              background: 'linear-gradient(to bottom, transparent 0%, rgba(253,246,233,0.55) 12%, rgba(253,246,233,0.93) 40%, rgba(253,246,233,0.98) 100%)',
               backdropFilter: 'blur(6px)',
             }}
           >
             <div className="pointer-events-auto text-center">
               <div className="inline-block sticker mb-6" style={{ transform: 'rotate(2deg)' }}>
-                <Sparkle size={14} color="#000" /> COMING SOON
+                <Sparkle size={14} color="var(--on-maple)" /> COMING SOON
               </div>
               <p className="text-[24px] md:text-[32px] font-black tracking-[-0.03em]">
-                발표자 라인업 <span className="text-lime">공개 예정</span>
+                발표자 라인업 <span className="text-maple">공개 예정</span>
               </p>
               <p className="mt-4 text-[14px] text-[var(--fg-4)] max-w-[320px] mx-auto leading-[1.65]">
                 발표자가 확정되면 프로필과 세션 주제가 공개됩니다.

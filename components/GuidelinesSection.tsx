@@ -41,13 +41,13 @@ const ROLLING_ITEMS = [...GUIDELINES, ...GUIDELINES];
 function GuidelineCard({ item }: { item: (typeof GUIDELINES)[number] }) {
   return (
     <div
-      className="group relative shrink-0 w-[280px] md:w-[320px] px-6 py-7 rounded-2xl border bg-[var(--bg-1)] transition-all duration-200 hover:border-[var(--lime)] hover:translate-y-[-3px] hover:shadow-[0_8px_24px_rgba(198,247,59,0.12)]"
+      className="group relative shrink-0 w-[280px] md:w-[320px] px-6 py-7 rounded-2xl border bg-[var(--bg-1)] transition-all duration-200 hover:border-[var(--maple)] hover:translate-y-[-3px] hover:shadow-[0_8px_24px_rgba(232,117,42,0.18)]"
       style={{ borderColor: 'var(--line)' }}
     >
       <div className="text-[32px] mb-4 transition-transform duration-300 group-hover:scale-110">
         {item.emoji}
       </div>
-      <h3 className="text-[16px] font-bold tracking-tight text-white mb-2 group-hover:text-[var(--lime)] transition-colors">
+      <h3 className="text-[16px] font-bold tracking-tight text-[var(--fg-1)] mb-2 group-hover:text-[var(--maple-text)] transition-colors">
         {item.title}
       </h3>
       <p className="text-[13px] leading-[1.7] text-[var(--fg-3)]">
@@ -63,10 +63,10 @@ export default function GuidelinesSection() {
       <div className="absolute inset-0 bg-grid-tight opacity-40 pointer-events-none" />
 
       <div className="absolute top-[10%] right-[6%] rotate-[12deg]">
-        <Sparkle size={36} color="var(--lime)" className="deco-twinkle" style={{ '--d': '0.3s' } as React.CSSProperties} />
+        <Sparkle size={36} color="var(--maple)" className="deco-twinkle" style={{ '--d': '0.3s' } as React.CSSProperties} />
       </div>
       <div className="absolute bottom-[12%] left-[5%]">
-        <StarBurst size={40} color="#fff" className="deco-wiggle" style={{ '--d': '0.6s' } as React.CSSProperties} />
+        <StarBurst size={40} color="var(--persimmon)" className="deco-wiggle" style={{ '--d': '0.6s' } as React.CSSProperties} />
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-6 md:px-10">
@@ -75,7 +75,7 @@ export default function GuidelinesSection() {
             <span className="num">06</span> GUIDELINES
           </div>
           <h2 className="display-section mt-6 reveal" data-delay="1">
-            지켜<span className="text-lime">주세요.</span>
+            지켜<span className="text-maple">주세요.</span>
           </h2>
           <p className="mt-5 max-w-[480px] text-[var(--fg-3)] text-[15px] leading-[1.7] reveal" data-delay="2">
             모두가 편안하게 밋업을 즐길 수 있도록, 몇 가지 부탁드립니다.

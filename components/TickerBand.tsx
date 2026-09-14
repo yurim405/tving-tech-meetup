@@ -23,7 +23,7 @@ export default function TickerBand({ items, reverse = false, speed = 'normal' }:
               <span
                 key={`${dup}-${i}`}
                 className={`font-mono text-[13px] md:text-[15px] font-bold tracking-[0.12em] uppercase ${
-                  t === '✦' ? 'text-[var(--lime)] text-[18px]' : 'text-[var(--fg-4)]'
+                  t === '✦' ? 'text-[var(--maple-text)] text-[18px]' : 'text-[var(--fg-4)]'
                 }`}
               >
                 {t}

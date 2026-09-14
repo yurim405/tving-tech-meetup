@@ -21,7 +21,7 @@ export default function TiltCard({ children, className = '' }: TiltCardProps) {
 
     setStyle({
       transform: `perspective(600px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg) translate(-2px, -2px)`,
-      boxShadow: `${-x * 12}px ${-y * 12 + 6}px 0 #000`,
+      boxShadow: `${-x * 12}px ${-y * 12 + 6}px 0 var(--shadow)`,
     });
   }, []);
 

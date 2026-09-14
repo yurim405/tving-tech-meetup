@@ -23,7 +23,7 @@ export default function Header() {
       style={{
         backdropFilter: scrolled ? 'blur(18px) saturate(140%)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(140%)' : 'none',
-        background: scrolled ? 'rgba(11,11,11,0.7)' : 'transparent',
+        background: scrolled ? 'rgba(253,246,233,0.82)' : 'transparent',
         borderBottom: scrolled ? '1px solid var(--line)' : '1px solid transparent',
       }}
     >
@@ -55,8 +55,8 @@ export default function Header() {
           <span className="chip hidden xl:inline-flex">MAY 2026</span>
           <button
             onClick={() => { scrollToId('cfp'); }}
-            className="btn-lime"
-            style={{ padding: '9px 16px', fontSize: 12, letterSpacing: '0.1em', boxShadow: '3px 3px 0 #000' }}
+            className="btn-maple"
+            style={{ padding: '9px 16px', fontSize: 12, letterSpacing: '0.1em', boxShadow: '3px 3px 0 var(--shadow)' }}
           >
             발표 신청 →
           </button>

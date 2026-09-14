@@ -33,7 +33,7 @@ function SessionRow({ item, idx }: { item: ScheduleItem; idx: number }) {
     >
       {/* time */}
       <div className="pt-5 text-right">
-        <div className="session-time font-mono text-[16px] md:text-[19px] font-extrabold tabular-nums tracking-tight text-white transition-colors">
+        <div className="session-time font-mono text-[16px] md:text-[19px] font-extrabold tabular-nums tracking-tight text-[var(--fg-1)] transition-colors">
           {item.time}
         </div>
         {item.duration && (
@@ -44,7 +44,7 @@ function SessionRow({ item, idx }: { item: ScheduleItem; idx: number }) {
       {/* dot */}
       <div className="pt-7 flex justify-center">
         {item.keynote ? (
-          <Sparkle size={22} color="var(--lime)" />
+          <Sparkle size={22} color="var(--maple)" />
         ) : (
           <span className="timeline-dot" />
         )}
@@ -56,33 +56,33 @@ function SessionRow({ item, idx }: { item: ScheduleItem; idx: number }) {
           <TiltCard className={`session-card px-5 md:px-7 py-5 md:py-6 relative overflow-hidden ${isComingSoon ? 'pointer-events-none' : ''}`}>
             {/* 공개 예정 오버레이 */}
             {isComingSoon && (
-              <div className="absolute inset-0 z-10 flex items-center justify-center" style={{ background: 'rgba(11,11,11,0.85)', backdropFilter: 'blur(4px)' }}>
+              <div className="absolute inset-0 z-10 flex items-center justify-center" style={{ background: 'rgba(253,246,233,0.88)', backdropFilter: 'blur(4px)' }}>
                 <div className="text-center">
-                  <div className="font-mono text-[11px] tracking-[0.22em] text-[var(--lime)] font-bold">COMING SOON</div>
-                  <div className="mt-1 text-[15px] font-bold text-white">공개 예정</div>
+                  <div className="font-mono text-[11px] tracking-[0.22em] text-[var(--maple-text)] font-bold">COMING SOON</div>
+                  <div className="mt-1 text-[15px] font-bold text-[var(--fg-1)]">공개 예정</div>
                 </div>
               </div>
             )}
 
             <div className="flex flex-wrap items-center gap-2 mb-3">
               <TrackPill track={item.track} />
-              {item.keynote && <span className="chip chip-lime" style={{ borderColor: 'var(--lime)' }}>★ KEYNOTE</span>}
+              {item.keynote && <span className="chip chip-maple" style={{ borderColor: 'var(--maple)' }}>★ KEYNOTE</span>}
               {(item.type === 'opening' || item.type === 'closing') && <span className="chip">CEREMONY</span>}
-              {item.type === 'lightning' && <span className="chip chip-outline-lime">⚡ LIGHTNING</span>}
+              {item.type === 'lightning' && <span className="chip chip-outline-maple">⚡ LIGHTNING</span>}
               {(item.tags ?? []).map((t) => (
                 <span key={t} className="chip">{t}</span>
               ))}
             </div>
 
-            <h3 className="text-[16px] md:text-[19px] font-bold tracking-tight leading-[1.3] text-white">
+            <h3 className="text-[16px] md:text-[19px] font-bold tracking-tight leading-[1.3] text-[var(--fg-1)]">
               {item.title}
             </h3>
 
             {(item.speaker || item.role) && (
               <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-[var(--fg-3)]">
                 {item.speaker && (
-                  <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-white font-medium">
-                    <span className="w-1.5 h-1.5" style={{ background: 'var(--lime)' }} />
+                  <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-[var(--fg-1)] font-medium">
+                    <span className="w-1.5 h-1.5" style={{ background: 'var(--maple)' }} />
                     {item.speaker}
                   </span>
                 )}
@@ -125,13 +125,13 @@ export default function ScheduleSection() {
       <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
 
       <div className="absolute top-[8%] left-[5%] rotate-[15deg]">
-        <Sparkle size={48} color="var(--lime)" className="deco-pop" style={{ '--d': '0.4s' } as React.CSSProperties} />
+        <Sparkle size={48} color="var(--maple)" className="deco-pop" style={{ '--d': '0.4s' } as React.CSSProperties} />
       </div>
       <div className="absolute top-[12%] right-[8%] -rotate-[10deg]">
-        <Sparkle size={36} color="#fff" className="deco-twinkle" style={{ '--d': '0.7s' } as React.CSSProperties} />
+        <Sparkle size={36} color="var(--ginkgo)" className="deco-twinkle" style={{ '--d': '0.7s' } as React.CSSProperties} />
       </div>
       <div className="absolute bottom-[6%] right-[5%] -rotate-[8deg]">
-        <BrushSmile width={120} color="rgba(255,255,255,0.7)" className="deco-wiggle" style={{ '--d': '0.9s' } as React.CSSProperties} />
+        <BrushSmile width={120} color="var(--fg-4)" className="deco-wiggle" style={{ '--d': '0.9s' } as React.CSSProperties} />
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-6 md:px-10">
@@ -139,7 +139,7 @@ export default function ScheduleSection() {
           <div>
             <div className="section-tag reveal"><span className="num">03</span> SCHEDULE</div>
             <h2 className="display-section mt-6 reveal" data-delay="1">
-              세션 <span className="text-lime">타임라인.</span>
+              세션 <span className="text-maple">타임라인.</span>
             </h2>
             <div className="mt-4 reveal" data-delay="2">
               <span className="sticker" style={{ transform: 'rotate(-2deg)' }}>
@@ -168,16 +168,16 @@ export default function ScheduleSection() {
           {/* 공개 예정 오버레이 */}
           <div className="absolute inset-x-0 bottom-0 h-[65%] pointer-events-none z-10 flex flex-col items-center justify-end pb-16"
             style={{
-              background: 'linear-gradient(to bottom, transparent 0%, rgba(11,11,11,0.6) 20%, rgba(11,11,11,0.92) 50%, rgba(11,11,11,0.98) 100%)',
+              background: 'linear-gradient(to bottom, transparent 0%, rgba(253,246,233,0.6) 20%, rgba(253,246,233,0.93) 50%, rgba(253,246,233,0.98) 100%)',
               backdropFilter: 'blur(6px)',
             }}
           >
             <div className="pointer-events-auto text-center">
               <div className="inline-block sticker mb-5" style={{ transform: 'rotate(-2deg)' }}>
-                <Sparkle size={14} color="#000" /> COMING SOON
+                <Sparkle size={14} color="var(--on-maple)" /> COMING SOON
               </div>
               <p className="text-[22px] md:text-[28px] font-black tracking-tight">
-                세션 라인업 <span className="text-lime">공개 예정</span>
+                세션 라인업 <span className="text-maple">공개 예정</span>
               </p>
               <p className="mt-3 text-[14px] text-[var(--fg-3)] max-w-[360px] mx-auto leading-[1.6]">
                 발표자와 세션 주제가 확정되면 업데이트됩니다.
