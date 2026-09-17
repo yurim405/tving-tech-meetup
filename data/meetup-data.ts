@@ -1,15 +1,16 @@
 export const MEETUP_META = {
   edition: '',
   monthLabel: 'May',
-  dateText: '2026. 06. 05 (FRI) 15:00 – 16:30',
+  dateText: '2026. 09. 30 (WED) 15:00 – 17:00',
   venue: '13층 C/D',
   capacity: '오프라인 40석',
-  hostTeam: 'Web Core Development',
+  hostTeam: 'Web Core Development & Web Live Development',
   theme: 'Streaming at Scale',
   themeKo: '스트리밍의 안쪽, 그 너머',
+  cfpUrl: 'https://tving.atlassian.net/wiki/spaces/TVING/pages/1854573076/26-09',
 };
 
-export const MEETUP_TARGET_ISO = '2026-06-05T15:00:00+09:00';
+export const MEETUP_TARGET_ISO = '2026-09-30T15:00:00+09:00';
 
 /* ---------- Schedule ---------- */
 
@@ -30,8 +31,8 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
   {
     time: '15:00',
     type: 'opening',
-    title: '팀 소개 — Web Core Development',
-    desc: '이번 달 호스트 팀 Web Core Development를 소개합니다.',
+    title: `팀 소개 — ${MEETUP_META.hostTeam}`,
+    desc: '이번 달 호스트 팀 Web Core Development와 Web Live Development를 소개합니다.',
     duration: '10m',
     track: 'MAIN',
   },
@@ -48,42 +49,45 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     type: 'session',
     title: '장애 리포트',
     desc: '최근 발생한 장애 사례를 공유하고 원인과 대응 과정을 되짚어 봅니다.',
-    duration: '15m',
-    track: 'INFRA',
+    duration: '5m',
+    track: 'ALL',
     tags: ['Incident', 'Postmortem'],
   },
   {
-    time: '15:30',
+    time: '15:20',
     type: 'session',
-    title: 'Tech spec / RFC',
-    desc: '공개 예정',
-    track: 'WEB',
-  },
-  {
-    time: '15:40',
-    type: 'session',
-    title: '기술 공유 — Refine 실제 서비스 사례 공유 (feat. 투표 플랫폼)',
-    speaker: '송민혁',
-    desc: '공개 예정',
-    track: 'WEB',
-    tags: ['Refine', 'Admin'],
+    title: '보안사고 팀별 회고',
+    desc: 'Billing · API · Service · Infra · Media 다섯 팀이 각자의 대응 과정을 회고합니다.',
+    duration: '40m',
+    track: 'ALL',
+    tags: ['Billing', 'API', 'Service', 'Infra', 'Media'],
   },
   {
     time: '16:00',
     type: 'session',
-    title: 'Tech Pulse',
+    title: '기술 공유',
     desc: '공개 예정',
+    duration: '30m',
     track: 'ALL',
   },
   {
-    time: '16:15',
+    time: '16:30',
+    type: 'lightning',
+    title: '미니 코너 — [2026 추석 특집] 가족오락관',
+    desc: '명절 특집으로 준비한 팀 대항 미니 게임 코너입니다.',
+    duration: '25m',
+    track: 'MAIN',
+  },
+  {
+    time: '16:55',
     type: 'closing',
     title: "What's Next & Closing",
-    desc: '공개 예정',
-    duration: '15m',
+    desc: '다음 밋업 예고와 마무리 인사.',
+    duration: '5m',
     track: 'ALL',
   },
 ];
+
 
 /* ---------- Speakers ---------- */
 
