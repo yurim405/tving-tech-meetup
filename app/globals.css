@@ -1,371 +1,204 @@
+/* @import는 다른 룰보다 먼저 와야 유효하다. @tailwind 뒤에 두면 브라우저가 통째로 무시한다. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap');
-
 :root {
-  --bg-0: #0b0b0b;
-  --bg-1: #121212;
-  --bg-2: #1a1a1a;
-  --bg-3: #232323;
-  --line: rgba(255, 255, 255, 0.1);
-  --line-strong: rgba(255, 255, 255, 0.22);
-  --grid: rgba(255, 255, 255, 0.07);
-  --fg-1: #ffffff;
-  --fg-2: #e5e5e5;
-  --fg-3: #a0a0a0;
-  --fg-4: #6a6a6a;
-  --lime: #c6f73b;
-  --lime-dim: #b6e32c;
-  --lime-soft: rgba(198, 247, 59, 0.14);
-  --lime-glow: rgba(198, 247, 59, 0.45);
+  /* 오브젝트 이미지에 알파가 없어 배경색을 이미지의 밑색 rgb(249,248,248)에
+     정확히 맞춘다. 곱연산으로는 흰색이 아닌 밑색이 남아 사각형이 드러난다. */
+  --bg: #f9f8f8;
+  --ink: #262626;
+  --ink-2: #525252;
+  --ink-3: #a3a3a3;
+  --line: rgba(38, 38, 38, 0.1);
+  --line-2: rgba(38, 38, 38, 0.22);
+
+  --red: #ff153c;
+  --sky: #38bdf8;
+  --lime: #22c55e;
+  --violet: #8b5cf6;
+  --amber: #fb923c;
 }
 
-html { scroll-behavior: smooth; }
-
-html, body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg-0);
-  color: var(--fg-1);
-  font-feature-settings: 'ss06', 'tnum';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+html {
+  scroll-behavior: smooth;
 }
 
-::selection { background: var(--lime); color: #000; }
-
-/* ─── grid backgrounds ─── */
-.bg-grid {
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 90px 90px;
-}
-.bg-grid-tight {
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-/* ─── typography ─── */
-.display-hero    { font-size: clamp(64px, 11vw, 170px);  font-weight: 900; letter-spacing: -0.055em; line-height: 0.86; }
-.display-section { font-size: clamp(36px, 6vw, 84px);    font-weight: 900; letter-spacing: -0.05em;  line-height: 1.15; }
-.display-mid     { font-size: clamp(28px, 4vw, 52px);    font-weight: 900; letter-spacing: -0.04em;  line-height: 0.95; }
-h1, h2, h3, h4, .display-hero, .display-section, li, a, button, p { word-break: keep-all; }
-
-/* ─── pill tags ─── */
-.pill-tag {
-  display: inline-block;
-  padding: 12px 22px;
-  font-size: clamp(15px, 1.6vw, 22px);
-  font-weight: 800;
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, system-ui, sans-serif;
   letter-spacing: -0.02em;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45);
-  white-space: nowrap;
 }
-.pill-tag-lime  { background: var(--lime); color: #000; }
-.pill-tag-white { background: #fff;        color: #000; }
 
-/* ─── chips ─── */
-.chip {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 10px;
-  font-family: ui-monospace, monospace;
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 0.16em;
-  color: var(--fg-2);
-  border: 1px solid var(--line-strong);
-  background: rgba(255, 255, 255, 0.03);
+::selection {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* ─── 타이포 ─── */
+
+/* 히어로 워드마크. Archivo Black은 400이 이미 블랙이라 굵기를 올리면 뭉갠다. */
+.tm-display {
+  font-family: 'Archivo Black', 'Pretendard Variable', sans-serif;
+  font-weight: 400;
+  font-size: clamp(40px, min(9.4vw, 9.6vh), 112px);
+  line-height: 0.84;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
-  white-space: nowrap;
 }
-.chip-lime         { color: #000; background: var(--lime); border-color: var(--lime); }
-.chip-outline-lime { color: var(--lime); border-color: var(--lime); background: var(--lime-soft); }
-
-/* ─── sticker ─── */
-.sticker {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--lime); color: #000;
-  padding: 8px 14px;
-  font-family: ui-monospace, monospace;
-  font-size: 12px; font-weight: 800;
-  letter-spacing: 0.14em;
-  box-shadow: 3px 3px 0 #000;
-}
-
-/* ─── section tag ─── */
-.section-tag {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-family: ui-monospace, monospace;
-  font-size: 12px; font-weight: 700;
-  letter-spacing: 0.22em;
-  color: var(--fg-2);
+.tm-display-sub {
+  font-family: 'Archivo Black', 'Pretendard Variable', sans-serif;
+  font-weight: 400;
+  font-size: clamp(30px, min(7vw, 6.6vh), 78px);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
-  white-space: nowrap;
 }
-.section-tag .num {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 28px; height: 28px;
-  background: var(--lime); color: #000;
+.tm-h2 {
   font-weight: 800;
+  font-size: clamp(28px, 4.2vw, 54px);
+  line-height: 1.14;
+  letter-spacing: -0.04em;
 }
-
-/* ─── buttons ─── */
-.btn-lime {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 14px 22px;
-  background: var(--lime); color: #000;
-  font-weight: 800; font-size: 14px;
-  border: none; cursor: pointer;
-  box-shadow: 5px 5px 0 #000, 0 0 0 1px var(--lime);
-  transition: transform 140ms, box-shadow 140ms, background 140ms;
-}
-.btn-lime:hover  { transform: translate(-1px,-1px); box-shadow: 7px 7px 0 #000, 0 0 0 1px var(--lime); background: #d4ff5e; }
-.btn-lime:active { transform: translate(3px,3px);   box-shadow: 1px 1px 0 #000, 0 0 0 1px var(--lime); }
-
-.btn-ghost-line {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 13px 22px;
-  background: transparent; color: #fff;
-  border: 1px solid var(--line-strong);
-  font-weight: 600; font-size: 14px;
-  cursor: pointer;
-  transition: border-color 200ms, background 200ms;
-}
-.btn-ghost-line:hover { border-color: var(--lime); background: var(--lime-soft); color: var(--lime); }
-
-/* ─── nav links ─── */
-.nav-link {
-  position: relative;
-  font-family: ui-monospace, monospace;
-  font-size: 12px; font-weight: 600;
+.tm-label {
+  font-size: 12px;
+  font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--fg-2);
-  padding: 6px 2px;
-  transition: color 200ms;
+  color: var(--ink-3);
+}
+h1,
+h2,
+h3,
+p,
+li,
+a {
+  word-break: keep-all;
+}
+
+/* ─── 버튼 ─── */
+.tm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  background: var(--ink);
+  color: #fff;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), background 180ms;
+}
+.tm-btn:hover {
+  transform: translateY(-2px);
+  background: #000;
+}
+.tm-btn-red {
+  background: var(--red);
+}
+.tm-btn-red:hover {
+  background: #e00f33;
+}
+.tm-btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line-2);
+}
+.tm-btn-ghost:hover {
+  background: rgba(38, 38, 38, 0.05);
+  border-color: var(--ink);
+}
+
+/* ─── 알약 라벨 ─── */
+.tm-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line-2);
+  font-size: 13px;
+  font-weight: 700;
   white-space: nowrap;
 }
-.nav-link::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 2px; background: var(--lime);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.nav-link:hover { color: #fff; }
-.nav-link:hover::after, .nav-link.is-active::after { transform: scaleX(1); }
-.nav-link.is-active { color: var(--lime); }
 
-/* ─── timeline ─── */
-.timeline-rail {
-  position: absolute;
-  left: 16px; top: 18px; bottom: 18px;
-  width: 2px;
-  background: linear-gradient(180deg, transparent, var(--line-strong) 6%, var(--line-strong) 94%, transparent);
+/* ─── 3D 오브젝트 ─── */
+/* 이미지 밑색을 --bg에 맞춰 두고, JPEG 압축으로 남는 가장자리 색 차이는
+   테두리를 부드럽게 깎아 없앤다. 오브젝트는 이미지 중앙 70% 안에 있어 잘리지 않는다. */
+.tm-obj {
+  user-select: none;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(closest-side, #000 78%, transparent 99%);
+  mask-image: radial-gradient(closest-side, #000 78%, transparent 99%);
 }
-.timeline-dot {
-  width: 14px; height: 14px;
-  background: #000;
-  border: 2px solid var(--fg-3);
-  transition: border-color 200ms, background 200ms, box-shadow 200ms, transform 200ms;
+/* 웨이브는 좌하단↗우상단으로 흘러 가장자리까지 닿는다. 원형 마스크로 깎으면 띠가
+   잘리므로, 화면 안쪽을 향하는 좌상단 방향으로만 페이드시킨다(우하단 코너 배치 전용).
+   밑색도 rgb(254)로 다른 오브젝트보다 밝아 2% 낮춰 --bg에 맞춘다. */
+.tm-obj-bleed {
+  -webkit-mask-image: linear-gradient(to top left, #000 34%, transparent 74%);
+  mask-image: linear-gradient(to top left, #000 34%, transparent 74%);
+  filter: brightness(0.98);
 }
-.session-row:hover .timeline-dot {
-  background: var(--lime); border-color: var(--lime);
-  box-shadow: 0 0 0 4px rgba(198, 247, 59, 0.18), 0 0 20px var(--lime-glow);
-  transform: scale(1.15) rotate(45deg);
+.tm-obj-float {
+  animation: tm-float var(--dur, 7s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
 }
-
-/* ─── session card ─── */
-.session-card {
-  position: relative;
-  border: 1px solid var(--line);
-  background: var(--bg-1);
-  transition: border-color 200ms, transform 200ms, background 200ms;
-  cursor: pointer;
-}
-.session-card:hover {
-  border-color: var(--lime);
-  background: rgba(198, 247, 59, 0.04);
-}
-.session-card:hover .session-time { color: var(--lime); }
-.session-card:hover .session-arrow { transform: translateX(6px); color: var(--lime); }
-.session-arrow { transition: transform 200ms, color 200ms; }
-
-.break-row {
-  background: repeating-linear-gradient(-45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 8px, transparent 8px, transparent 18px);
-  border: 1px dashed var(--line-strong);
+@keyframes tm-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translateY(var(--amp, -16px)) rotate(var(--rot-to, 0deg));
+  }
 }
 
-/* ─── track colors ─── */
-.track-MAIN   { --tc: #C6F73B; }
-.track-INFRA  { --tc: #7AE0FF; }
-.track-WEB    { --tc: #D9B8FF; }
-.track-ML     { --tc: #86EFAC; }
-.track-DESIGN { --tc: #FCD34D; }
-.track-ADS    { --tc: #FCA5A5; }
-.track-ALL    { --tc: #E5E5E5; }
-.track-pill {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: ui-monospace, monospace;
-  font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
-  padding: 4px 10px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--tc);
-  border: 1.5px solid var(--tc);
-}
-.track-pill .pip { width: 6px; height: 6px; background: var(--tc); display: inline-block; }
-
-/* ─── speaker card ─── */
-.speaker-card {
-  position: relative;
-  background: var(--bg-1);
+/* ─── 필터 칩 ─── */
+.tm-chip {
+  padding: 9px 18px;
+  border-radius: 999px;
   border: 1.5px solid var(--line);
-  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), border-color 200ms, box-shadow 200ms;
-  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-2);
+  transition: all 180ms;
 }
-.speaker-card:hover {
-  border-color: var(--lime);
-  transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0 var(--lime);
+.tm-chip:hover {
+  border-color: var(--line-2);
+  color: var(--ink);
 }
-.speaker-img { transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1), filter 300ms; }
-.speaker-card:hover .speaker-img { transform: scale(1.05); filter: saturate(1.15) brightness(1.05); }
-.speaker-tape {
-  position: absolute; top: 14px; left: 14px;
-  display: inline-block;
-  background: var(--lime); color: #000;
-  font-family: ui-monospace, monospace;
-  font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
-  padding: 4px 10px;
-  transform: rotate(-3deg);
-  box-shadow: 2px 2px 0 #000;
-  z-index: 2;
+.tm-chip[aria-pressed='true'] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
 }
 
-/* ─── form fields ─── */
-.field input, .field textarea {
-  width: 100%;
-  background: var(--bg-1);
-  border: 1.5px solid var(--line-strong);
-  color: var(--fg-1);
-  padding: 14px 16px;
-  font-size: 14px; font-family: inherit;
-  outline: none; border-radius: 0; resize: vertical;
-  transition: border-color 150ms, background 150ms, box-shadow 150ms;
-}
-.field input::placeholder, .field textarea::placeholder { color: var(--fg-4); }
-.field input:hover, .field textarea:hover { border-color: var(--fg-3); }
-.field input:focus, .field textarea:focus {
-  border-color: var(--lime);
-  background: rgba(198, 247, 59, 0.04);
-  box-shadow: 4px 4px 0 var(--lime);
-}
-
-/* ─── animations ─── */
-@keyframes bounce-soft {
-  0%, 100% { transform: translateY(0); opacity: 0.7; }
-  50%      { transform: translateY(10px); opacity: 1; }
-}
-.bounce-arrow { animation: bounce-soft 1.8s ease-in-out infinite; }
-
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.marquee-track { animation: marquee 36s linear infinite; }
-
-@keyframes spin-slow { to { transform: rotate(360deg); } }
-.spin-slow { animation: spin-slow 18s linear infinite; }
-
-@keyframes blink-soft { 50% { opacity: 0.3; } }
-.blink { animation: blink-soft 1.4s steps(1) infinite; }
-
-/* ─── rolling cards ─── */
-@keyframes scroll-cards {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* ─── parallax layers (scroll-driven) ─── */
-.parallax-slow   { will-change: transform; transition: transform 0.1s linear; }
-.parallax-medium { will-change: transform; transition: transform 0.1s linear; }
-.parallax-fast   { will-change: transform; transition: transform 0.1s linear; }
-
-/* ─── hero decoration: pop / bounce / float ─── */
-/* wrapper div handles static rotation; keyframes only do scale/translate/opacity */
-
-@keyframes pop-in {
-  0%   { scale: 0;   translate: 0 40px; opacity: 0; }
-  60%  { scale: 1.3; translate: 0 -8px; opacity: 1; }
-  80%  { scale: 0.9; translate: 0 4px;  opacity: 1; }
-  100% { scale: 1;   translate: 0 0;    opacity: 1; }
-}
-
-@keyframes float-bounce {
-  0%, 100% { translate: 0 0;     scale: 1;    }
-  30%      { translate: 0 -14px; scale: 1.08; }
-  50%      { translate: 0 -4px;  scale: 0.96; }
-  70%      { translate: 0 -16px; scale: 1.05; }
-}
-
-@keyframes wiggle-rot {
-  0%, 100% { rotate: 0deg;  }
-  25%      { rotate: 8deg;  }
-  75%      { rotate: -8deg; }
-}
-
-@keyframes twinkle-pulse {
-  0%, 100% { opacity: 1;   scale: 1;   }
-  50%      { opacity: 0.25; scale: 0.65; }
-}
-
-@keyframes sticker-drop {
-  0%   { scale: 0;   opacity: 0; }
-  50%  { scale: 1.25; opacity: 1; }
-  70%  { scale: 0.85; opacity: 1; }
-  85%  { scale: 1.08; opacity: 1; }
-  100% { scale: 1;   opacity: 1; }
-}
-
-.deco-pop {
+/* ─── 스크롤 등장 ─── */
+.tm-rise {
   opacity: 0;
-  animation: pop-in 0.7s cubic-bezier(0.34,1.56,0.64,1) var(--d, 0.3s) forwards,
-             float-bounce 4s ease-in-out calc(var(--d, 0.3s) + 0.7s) infinite;
+  transform: translateY(18px);
+  transition: opacity 520ms cubic-bezier(0.16, 1, 0.3, 1), transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tm-rise.is-in {
+  opacity: 1;
+  transform: none;
 }
 
-.deco-wiggle {
-  opacity: 0;
-  animation: pop-in 0.6s cubic-bezier(0.34,1.56,0.64,1) var(--d, 0.5s) forwards,
-             wiggle-rot 3s ease-in-out calc(var(--d, 0.5s) + 0.6s) infinite;
-}
-
-.deco-twinkle {
-  opacity: 0;
-  animation: pop-in 0.5s cubic-bezier(0.34,1.56,0.64,1) var(--d, 0.4s) forwards,
-             twinkle-pulse 2.2s ease-in-out calc(var(--d, 0.4s) + 0.5s) infinite;
-}
-
-.deco-sticker-bounce {
-  opacity: 0;
-  animation: sticker-drop 0.9s cubic-bezier(0.34,1.56,0.64,1) 0.2s forwards;
-}
-
-/* ─── scrollbar ─── */
-::-webkit-scrollbar { width: 12px; height: 12px; }
-::-webkit-scrollbar-track { background: var(--bg-0); }
-::-webkit-scrollbar-thumb { background: var(--bg-3); border: 3px solid var(--bg-0); }
-::-webkit-scrollbar-thumb:hover { background: var(--lime); }
-
-/* ─── utility classes ─── */
-.text-lime { color: var(--lime); }
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+@media (prefers-reduced-motion: reduce) {
+  .tm-rise {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .tm-obj-float {
+    animation: none;
+  }
+  .tm-btn:hover {
+    transform: none;
+  }
 }
