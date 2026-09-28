@@ -20,7 +20,7 @@ export interface ScheduleItem {
   title: string;
   speaker?: string;
   role?: string;
-  desc: string;
+  desc?: string;
   duration?: string;
   track?: string;
   tags?: string[];
@@ -39,23 +39,6 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
   {
     time: '15:10',
     type: 'session',
-    title: '신규 입사자 소개',
-    desc: '이번 달 새로 합류한 동료들을 만나보세요.',
-    duration: '5m',
-    track: 'ALL',
-  },
-  {
-    time: '15:15',
-    type: 'session',
-    title: '장애 리포트',
-    desc: '최근 발생한 장애 사례를 공유하고 원인과 대응 과정을 되짚어 봅니다.',
-    duration: '5m',
-    track: 'ALL',
-    tags: ['Incident', 'Postmortem'],
-  },
-  {
-    time: '15:20',
-    type: 'session',
     title: '보안사고 팀별 회고',
     desc: 'Billing · API · Service · Infra · Media 다섯 팀이 각자의 대응 과정을 회고합니다.',
     duration: '40m',
@@ -63,27 +46,53 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
     tags: ['Billing', 'API', 'Service', 'Infra', 'Media'],
   },
   {
-    time: '16:00',
-    type: 'session',
-    title: '기술 공유',
-    desc: '공개 예정',
-    duration: '30m',
+    time: '15:50',
+    type: 'break',
+    title: '휴식',
+    desc: '잠시 쉬어갑니다. 커피 한 잔과 함께 옆자리 동료와 이야기 나눠 보세요.',
+    duration: '10m',
     track: 'ALL',
   },
   {
-    time: '16:30',
+    time: '16:00',
+    type: 'session',
+    title: '기술 공유 — 글로벌 아키텍쳐 TF 회고',
+    speaker: '옥승훈',
+    role: 'Service Platform',
+    duration: '10m',
+    track: 'ALL',
+  },
+  {
+    time: '16:10',
+    type: 'session',
+    title: '기술 공유 — 순회를 값으로 다루기',
+    speaker: '정래한',
+    role: 'Web Core Development',
+    duration: '10m',
+    track: 'ALL',
+  },
+  {
+    time: '16:20',
     type: 'lightning',
     title: '미니 코너 — [2026 추석 특집] 가족오락관',
     desc: '명절 특집으로 준비한 팀 대항 미니 게임 코너입니다.',
-    duration: '25m',
+    duration: '30m',
     track: 'MAIN',
   },
   {
-    time: '16:55',
+    time: '16:50',
+    type: 'session',
+    title: 'Tech Pulse',
+    desc: '한 달 새 바뀐 기술 흐름을 짧게 훑습니다.',
+    duration: '10m',
+    track: 'ALL',
+  },
+  {
+    time: '17:00',
     type: 'closing',
-    title: "What's Next & Closing",
+    title: '마무리',
     desc: '다음 밋업 예고와 마무리 인사.',
-    duration: '5m',
+    duration: '1m',
     track: 'ALL',
   },
 ];
@@ -94,59 +103,30 @@ export const SCHEDULE_DATA: ScheduleItem[] = [
 export interface Speaker {
   id: string;
   name: string;
-  nameEn: string;
+  nameEn?: string;
   team: string;
-  role: string;
+  role?: string;
   topic: string;
-  bio: string;
-  photo: string;
-  accent: string;
+  emoji?: string;
+  bio?: string;
+  photo?: string;
+  accent?: string;
 }
 
 export const SPEAKER_DATA: Speaker[] = [
   {
-    id: 'park-jihoon',
-    name: '박지훈',
-    nameEn: 'Jihoon Park',
-    team: 'Office of CTO',
-    role: 'CTO',
-    topic: 'Opening Keynote',
-    bio: '티빙의 기술 조직을 이끕니다. 이전에는 카카오, 라인에서 미디어 플랫폼을 만들었어요.',
-    photo: '/speakers/spk1.svg',
-    accent: 'from-rose-500/30 to-transparent',
+    id: 'ok-seunghun',
+    name: '옥승훈',
+    team: 'Service Platform',
+    topic: '글로벌 아키텍쳐 TF 회고',
+    emoji: '🌏',
   },
   {
-    id: 'jung-sumin',
-    name: '정수민',
-    nameEn: 'Sumin Jung',
-    team: 'Live Platform',
-    role: 'Tech Lead',
-    topic: '1,000만 동시 접속을 견디는 라이브 스트리밍 아키텍처',
-    bio: '라이브 송출, CDN 라우팅, ABR을 만집니다. 야구 중계 시즌이 가장 바쁜 사람.',
-    photo: '/speakers/spk2.svg',
-    accent: 'from-red-500/30 to-transparent',
-  },
-  {
-    id: 'lee-garam',
-    name: '이가람',
-    nameEn: 'Garam Lee',
-    team: 'Web Platform',
-    role: 'Senior Engineer',
-    topic: 'Next.js 15 App Router로 다시 짠 티빙 웹',
-    bio: 'tving.com 웹 전반과 디자인 시스템 연동을 담당합니다. RSC를 너무 좋아함.',
-    photo: '/speakers/spk3.svg',
-    accent: 'from-amber-500/30 to-transparent',
-  },
-  {
-    id: 'han-doyeon',
-    name: '한도연',
-    nameEn: 'Doyeon Han',
-    team: 'ML Platform',
-    role: 'ML Engineer',
-    topic: 'TVING 추천, LLM과 협업하는 법',
-    bio: '추천 모델과 프롬프트 파이프라인을 운영합니다. 가장 좋아하는 단어는 eval.',
-    photo: '/speakers/spk4.svg',
-    accent: 'from-violet-500/30 to-transparent',
+    id: 'jung-raehan',
+    name: '정래한',
+    team: 'Web Core Development',
+    topic: '순회를 값으로 다루기',
+    emoji: '🔁',
   },
 ];
 
