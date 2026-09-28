@@ -54,19 +54,29 @@ export default function Timetable() {
                 <h3 className="text-[17px] md:text-[20px] font-extrabold leading-[1.4] tracking-[-0.03em]">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-[14px] leading-[1.7] text-[var(--ink-2)]">{s.desc}</p>
+                {s.desc && <p className="mt-2 text-[14px] leading-[1.7] text-[var(--ink-2)]">{s.desc}</p>}
 
                 {/* 데스크톱에서는 오른쪽 칸이 맡는 정보라 좁은 화면에서만 보여준다 */}
                 <div className="mt-3 flex flex-wrap items-center gap-2 md:hidden">
                   <TrackBadge track={s.track} />
-                  {s.speaker && <span className="text-[13px] font-semibold text-[var(--ink-2)]">{s.speaker}</span>}
+                  {s.speaker && (
+                    <span className="text-[13px] font-semibold text-[var(--ink-2)]">
+                      {s.speaker}
+                      {s.role && <span className="text-[var(--ink-3)]"> · {s.role}</span>}
+                    </span>
+                  )}
                   {s.duration && <span className="text-[13px] text-[var(--ink-3)]">{s.duration}</span>}
                 </div>
               </div>
 
               <div className="hidden md:flex flex-col items-end gap-2 text-right">
                 <TrackBadge track={s.track} />
-                {s.speaker && <span className="text-[14px] font-semibold text-[var(--ink-2)]">{s.speaker}</span>}
+                {s.speaker && (
+                  <span className="text-[14px] font-semibold text-[var(--ink-2)]">
+                    {s.speaker}
+                    {s.role && <span className="text-[var(--ink-3)]"> · {s.role}</span>}
+                  </span>
+                )}
                 {s.duration && <span className="text-[13px] text-[var(--ink-3)]">{s.duration}</span>}
               </div>
             </li>
